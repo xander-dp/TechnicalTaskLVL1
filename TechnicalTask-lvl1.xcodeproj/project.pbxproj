@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE9F09112CEF646D00CFA6B5 /* Technical task - lvl1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Technical task - lvl1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9F09112CEF646D00CFA6B5 /* TechnicalTask-lvl1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TechnicalTask-lvl1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9F09142CEF646D00CFA6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE9F09162CEF646D00CFA6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE9F09182CEF646D00CFA6B5 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		CE9F09082CEF646D00CFA6B5 = {
 			isa = PBXGroup;
 			children = (
-				CE9F09132CEF646D00CFA6B5 /* Technical task - lvl1 */,
+				CE9F09132CEF646D00CFA6B5 /* TechnicalTask-lvl1 */,
 				CE9F09122CEF646D00CFA6B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,19 +46,19 @@
 		CE9F09122CEF646D00CFA6B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE9F09112CEF646D00CFA6B5 /* Technical task - lvl1.app */,
+				CE9F09112CEF646D00CFA6B5 /* TechnicalTask-lvl1.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE9F09132CEF646D00CFA6B5 /* Technical task - lvl1 */ = {
+		CE9F09132CEF646D00CFA6B5 /* TechnicalTask-lvl1 */ = {
 			isa = PBXGroup;
 			children = (
 				CE9F09292CEF659F00CFA6B5 /* Application */,
 				CE9F092A2CEF65CA00CFA6B5 /* UserModule */,
 				CE9F09282CEF658B00CFA6B5 /* Resources */,
 			);
-			path = "Technical task - lvl1";
+			path = "TechnicalTask-lvl1";
 			sourceTree = "<group>";
 		};
 		CE9F09282CEF658B00CFA6B5 /* Resources */ = {
@@ -91,9 +91,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE9F09102CEF646D00CFA6B5 /* Technical task - lvl1 */ = {
+		CE9F09102CEF646D00CFA6B5 /* TechnicalTask-lvl1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE9F09252CEF647100CFA6B5 /* Build configuration list for PBXNativeTarget "Technical task - lvl1" */;
+			buildConfigurationList = CE9F09252CEF647100CFA6B5 /* Build configuration list for PBXNativeTarget "TechnicalTask-lvl1" */;
 			buildPhases = (
 				CE9F090D2CEF646D00CFA6B5 /* Sources */,
 				CE9F090E2CEF646D00CFA6B5 /* Frameworks */,
@@ -103,9 +103,9 @@
 			);
 			dependencies = (
 			);
-			name = "Technical task - lvl1";
+			name = "TechnicalTask-lvl1";
 			productName = "Technical task - lvl1";
-			productReference = CE9F09112CEF646D00CFA6B5 /* Technical task - lvl1.app */;
+			productReference = CE9F09112CEF646D00CFA6B5 /* TechnicalTask-lvl1.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -123,7 +123,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CE9F090C2CEF646D00CFA6B5 /* Build configuration list for PBXProject "Technical task - lvl1" */;
+			buildConfigurationList = CE9F090C2CEF646D00CFA6B5 /* Build configuration list for PBXProject "TechnicalTask-lvl1" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -136,7 +136,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE9F09102CEF646D00CFA6B5 /* Technical task - lvl1 */,
+				CE9F09102CEF646D00CFA6B5 /* TechnicalTask-lvl1 */,
 			);
 		};
 /* End PBXProject section */
@@ -305,7 +305,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Technical task - lvl1/Resources/Info.plist";
+				INFOPLIST_FILE = "TechnicalTask-lvl1/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -336,7 +336,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Technical task - lvl1/Resources/Info.plist";
+				INFOPLIST_FILE = "TechnicalTask-lvl1/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -362,7 +362,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE9F090C2CEF646D00CFA6B5 /* Build configuration list for PBXProject "Technical task - lvl1" */ = {
+		CE9F090C2CEF646D00CFA6B5 /* Build configuration list for PBXProject "TechnicalTask-lvl1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE9F09232CEF647100CFA6B5 /* Debug */,
@@ -371,7 +371,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE9F09252CEF647100CFA6B5 /* Build configuration list for PBXNativeTarget "Technical task - lvl1" */ = {
+		CE9F09252CEF647100CFA6B5 /* Build configuration list for PBXNativeTarget "TechnicalTask-lvl1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE9F09262CEF647100CFA6B5 /* Debug */,
