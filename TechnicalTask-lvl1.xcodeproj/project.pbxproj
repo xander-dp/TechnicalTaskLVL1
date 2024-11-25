@@ -12,6 +12,9 @@
 		CE9F09192CEF646D00CFA6B5 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F09182CEF646D00CFA6B5 /* UserViewController.swift */; };
 		CE9F091E2CEF647100CFA6B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9F091D2CEF647100CFA6B5 /* Assets.xcassets */; };
 		CE9F09212CEF647100CFA6B5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE9F09202CEF647100CFA6B5 /* Base */; };
+		FA4800702CF498C1003432E8 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA48006F2CF498C1003432E8 /* UserCell.xib */; };
+		FA4800712CF498C1003432E8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48006E2CF498C1003432E8 /* UserCell.swift */; };
+		FA4800742CF4A72A003432E8 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800732CF4A725003432E8 /* UserEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		CE9F091D2CEF647100CFA6B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE9F09202CEF647100CFA6B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE9F09222CEF647100CFA6B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA48006E2CF498C1003432E8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		FA48006F2CF498C1003432E8 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		FA4800732CF4A725003432E8 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 		CE9F09132CEF646D00CFA6B5 /* TechnicalTask-lvl1 */ = {
 			isa = PBXGroup;
 			children = (
+				FA4800722CF4A165003432E8 /* Entity */,
 				CE9F09292CEF659F00CFA6B5 /* Application */,
 				CE9F092A2CEF65CA00CFA6B5 /* UserModule */,
 				CE9F09282CEF658B00CFA6B5 /* Resources */,
@@ -83,9 +90,27 @@
 		CE9F092A2CEF65CA00CFA6B5 /* UserModule */ = {
 			isa = PBXGroup;
 			children = (
+				FA4800752CF4D845003432E8 /* CustomViews */,
 				CE9F09182CEF646D00CFA6B5 /* UserViewController.swift */,
 			);
 			path = UserModule;
+			sourceTree = "<group>";
+		};
+		FA4800722CF4A165003432E8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				FA4800732CF4A725003432E8 /* UserEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		FA4800752CF4D845003432E8 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				FA48006E2CF498C1003432E8 /* UserCell.swift */,
+				FA48006F2CF498C1003432E8 /* UserCell.xib */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +173,7 @@
 			files = (
 				CE9F091E2CEF647100CFA6B5 /* Assets.xcassets in Resources */,
 				CE9F09212CEF647100CFA6B5 /* Base in Resources */,
+				FA4800702CF498C1003432E8 /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,8 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4800712CF498C1003432E8 /* UserCell.swift in Sources */,
 				CE9F09192CEF646D00CFA6B5 /* UserViewController.swift in Sources */,
 				CE9F09152CEF646D00CFA6B5 /* AppDelegate.swift in Sources */,
+				FA4800742CF4A72A003432E8 /* UserEntity.swift in Sources */,
 				CE9F09172CEF646D00CFA6B5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
