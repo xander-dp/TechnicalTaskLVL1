@@ -15,6 +15,11 @@
 		FA4800702CF498C1003432E8 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA48006F2CF498C1003432E8 /* UserCell.xib */; };
 		FA4800712CF498C1003432E8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48006E2CF498C1003432E8 /* UserCell.swift */; };
 		FA4800742CF4A72A003432E8 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800732CF4A725003432E8 /* UserEntity.swift */; };
+		FA48007B2CF4E99F003432E8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA4800792CF4E99F003432E8 /* Model.xcdatamodeld */; };
+		FA48007F2CF53917003432E8 /* GeoManagedObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48007E2CF53908003432E8 /* GeoManagedObj.swift */; };
+		FA4800812CF53922003432E8 /* AddressManagedObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800802CF5391D003432E8 /* AddressManagedObj.swift */; };
+		FA4800832CF53934003432E8 /* CompanyManagedObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800822CF53929003432E8 /* CompanyManagedObj.swift */; };
+		FA4800852CF53947003432E8 /* UserEntityManagedObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800842CF5393B003432E8 /* UserEntityManagedObj.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		FA48006E2CF498C1003432E8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		FA48006F2CF498C1003432E8 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		FA4800732CF4A725003432E8 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		FA48007A2CF4E99F003432E8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FA48007E2CF53908003432E8 /* GeoManagedObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoManagedObj.swift; sourceTree = "<group>"; };
+		FA4800802CF5391D003432E8 /* AddressManagedObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressManagedObj.swift; sourceTree = "<group>"; };
+		FA4800822CF53929003432E8 /* CompanyManagedObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyManagedObj.swift; sourceTree = "<group>"; };
+		FA4800842CF5393B003432E8 /* UserEntityManagedObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntityManagedObj.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,7 @@
 		CE9F09132CEF646D00CFA6B5 /* TechnicalTask-lvl1 */ = {
 			isa = PBXGroup;
 			children = (
+				FA4800782CF4E979003432E8 /* DataStorage */,
 				FA4800722CF4A165003432E8 /* Entity */,
 				CE9F09292CEF659F00CFA6B5 /* Application */,
 				CE9F092A2CEF65CA00CFA6B5 /* UserModule */,
@@ -111,6 +122,18 @@
 				FA48006F2CF498C1003432E8 /* UserCell.xib */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		FA4800782CF4E979003432E8 /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				FA4800842CF5393B003432E8 /* UserEntityManagedObj.swift */,
+				FA4800822CF53929003432E8 /* CompanyManagedObj.swift */,
+				FA4800802CF5391D003432E8 /* AddressManagedObj.swift */,
+				FA48007E2CF53908003432E8 /* GeoManagedObj.swift */,
+				FA4800792CF4E99F003432E8 /* Model.xcdatamodeld */,
+			);
+			path = DataStorage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,11 +207,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4800812CF53922003432E8 /* AddressManagedObj.swift in Sources */,
 				FA4800712CF498C1003432E8 /* UserCell.swift in Sources */,
 				CE9F09192CEF646D00CFA6B5 /* UserViewController.swift in Sources */,
 				CE9F09152CEF646D00CFA6B5 /* AppDelegate.swift in Sources */,
 				FA4800742CF4A72A003432E8 /* UserEntity.swift in Sources */,
 				CE9F09172CEF646D00CFA6B5 /* SceneDelegate.swift in Sources */,
+				FA48007F2CF53917003432E8 /* GeoManagedObj.swift in Sources */,
+				FA4800852CF53947003432E8 /* UserEntityManagedObj.swift in Sources */,
+				FA48007B2CF4E99F003432E8 /* Model.xcdatamodeld in Sources */,
+				FA4800832CF53934003432E8 /* CompanyManagedObj.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +437,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA4800792CF4E99F003432E8 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA48007A2CF4E99F003432E8 /* Model.xcdatamodel */,
+			);
+			currentVersion = FA48007A2CF4E99F003432E8 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE9F09092CEF646D00CFA6B5 /* Project object */;
 }

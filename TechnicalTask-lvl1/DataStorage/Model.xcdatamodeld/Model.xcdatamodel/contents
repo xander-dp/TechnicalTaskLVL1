@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23507" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Address" representedClassName="AddressManagedObj" syncable="YES">
+        <attribute name="city" attributeType="String"/>
+        <attribute name="street" attributeType="String"/>
+        <attribute name="suite" optional="YES" attributeType="String"/>
+        <attribute name="zipcode" optional="YES" attributeType="String"/>
+        <relationship name="geo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Geo" inverseName="address" inverseEntity="Geo"/>
+        <relationship name="user" maxCount="1" deletionRule="Cascade" destinationEntity="UserEntity" inverseName="address" inverseEntity="UserEntity"/>
+    </entity>
+    <entity name="Company" representedClassName="CompanyManagedObj" syncable="YES">
+        <attribute name="attribute2" optional="YES" attributeType="String"/>
+        <attribute name="bs" optional="YES" attributeType="String"/>
+        <attribute name="catchPhrase" optional="YES" attributeType="String"/>
+        <relationship name="user" maxCount="1" deletionRule="Cascade" destinationEntity="UserEntity" inverseName="company" inverseEntity="UserEntity"/>
+    </entity>
+    <entity name="Geo" representedClassName="GeoManagedObj" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="String"/>
+        <attribute name="lng" optional="YES" attributeType="String"/>
+        <relationship name="address" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="geo" inverseEntity="Address"/>
+    </entity>
+    <entity name="UserEntity" representedClassName="UserEntityManagedObj" syncable="YES">
+        <attribute name="email" attributeType="String" defaultValueString=""/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="userName" attributeType="String" defaultValueString=""/>
+        <attribute name="website" optional="YES" attributeType="String"/>
+        <relationship name="address" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="user" inverseEntity="Address"/>
+        <relationship name="company" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="user" inverseEntity="Company"/>
+    </entity>
+</model>
