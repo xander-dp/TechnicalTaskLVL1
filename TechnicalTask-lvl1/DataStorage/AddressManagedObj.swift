@@ -22,6 +22,8 @@ extension AddressManagedObj {
     @NSManaged public var street: String
     @NSManaged public var suite: String?
     @NSManaged public var zipcode: String?
+    
+    //model dependency
     @NSManaged public var geo: GeoManagedObj?
     @NSManaged public var user: UserEntityManagedObj?
 
@@ -29,4 +31,19 @@ extension AddressManagedObj {
 
 extension AddressManagedObj : Identifiable {
 
+}
+
+extension AddressManagedObj {
+    convenience init(context: NSManagedObjectContext, address: Address) {
+        self.init(context: context)
+        
+        self.city = address.city
+        self.street = address.street
+        self.suite = address.suite
+        self.zipcode = address.zipcode
+        self.geo = GeoManagedObj(context: context, geo: address.geo)
+        
+        //model dependency
+        self.geo?.address = self
+    }
 }

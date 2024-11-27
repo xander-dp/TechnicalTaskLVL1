@@ -21,8 +21,23 @@ extension CompanyManagedObj {
     @NSManaged public var name: String?
     @NSManaged public var catchPhrase: String?
     @NSManaged public var bs: String?
+    
+    //model dependency
+    @NSManaged public var user: UserEntityManagedObj?
 }
 
 extension CompanyManagedObj : Identifiable {
 
+}
+
+extension CompanyManagedObj {
+    convenience init?(context: NSManagedObjectContext, company: Company?) {
+        guard let company = company else { return nil }
+        
+        self.init(context: context)
+        
+        self.name = company.name
+        self.catchPhrase = company.catchPhrase
+        self.bs = company.bs
+    }
 }

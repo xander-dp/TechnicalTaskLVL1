@@ -20,9 +20,22 @@ extension GeoManagedObj {
 
     @NSManaged public var lat: String?
     @NSManaged public var lng: String?
+    
+    //model dependency
     @NSManaged public var address: AddressManagedObj?
 }
 
 extension GeoManagedObj : Identifiable {
 
+}
+
+extension GeoManagedObj {
+    convenience init?(context: NSManagedObjectContext, geo: Geo?) {
+        guard let geo = geo else { return nil }
+        
+        self.init(context: context)
+        
+        self.lat = geo.lat
+        self.lng = geo.lng
+    }
 }

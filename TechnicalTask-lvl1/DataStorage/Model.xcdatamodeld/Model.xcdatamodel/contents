@@ -9,15 +9,15 @@
         <relationship name="user" maxCount="1" deletionRule="Cascade" destinationEntity="UserEntity" inverseName="address" inverseEntity="UserEntity"/>
     </entity>
     <entity name="Company" representedClassName="CompanyManagedObj" syncable="YES">
-        <attribute name="attribute2" optional="YES" attributeType="String"/>
         <attribute name="bs" optional="YES" attributeType="String"/>
         <attribute name="catchPhrase" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="user" maxCount="1" deletionRule="Cascade" destinationEntity="UserEntity" inverseName="company" inverseEntity="UserEntity"/>
     </entity>
     <entity name="Geo" representedClassName="GeoManagedObj" syncable="YES">
         <attribute name="lat" optional="YES" attributeType="String"/>
         <attribute name="lng" optional="YES" attributeType="String"/>
-        <relationship name="address" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="geo" inverseEntity="Address"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="geo" inverseEntity="Address"/>
     </entity>
     <entity name="UserEntity" representedClassName="UserEntityManagedObj" syncable="YES">
         <attribute name="email" attributeType="String" defaultValueString=""/>

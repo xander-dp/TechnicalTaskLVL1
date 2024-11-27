@@ -25,6 +25,8 @@ extension UserEntityManagedObj {
     @NSManaged public var phone: String?
     @NSManaged public var userName: String
     @NSManaged public var website: String?
+    
+    //model dependency
     @NSManaged public var address: AddressManagedObj
     @NSManaged public var company: CompanyManagedObj?
 
@@ -32,4 +34,23 @@ extension UserEntityManagedObj {
 
 extension UserEntityManagedObj : Identifiable {
 
+}
+
+extension UserEntityManagedObj {
+    convenience init(context: NSManagedObjectContext, user: UserEntity) {
+        self.init(context: context)
+        
+        self.id = Int32(user.id)
+        self.name = user.name
+        self.userName = user.username
+        self.email = user.email
+        self.phone = user.phone
+        self.website = user.website
+        self.address = AddressManagedObj(context: context, address: user.address)
+        self.company = CompanyManagedObj(context: context, company: user.company)
+        
+        //model dependency
+        self.address.user = self
+        self.company?.user = self
+    }
 }
