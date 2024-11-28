@@ -6,87 +6,89 @@ import CoreData
 
 class UserViewController: UITableViewController {
     var cancellabels = Set<AnyCancellable>()
-    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>! //persistent
-    
+    var fetchedResultsController: NSFetchedResultsController<UserEntityManagedObj>! //persistent
+
     let keeper = DataKeeper()
     override func viewDidLoad() {
-        initializeFetchedResultsController()
-        
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = .white
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 100
         self.tableView.register(UINib(nibName: UserCell.xibName, bundle: nil),
                                 forCellReuseIdentifier: UserCell.reuseIdentifier)
-        keeper.fetchRemote()
-            .sink { compl in
-                print(compl)
-            } receiveValue: { val in
-                print(val)
-                CoreDataStack.persistent.create(from: val)
-                CoreDataStack.persistent.saveContext()
+        
+        self.fetchedResultsController = keeper.persistentObservable.fetchedResultsController
+        subscribeOnFRCUpdates()
+        subscribeOnDataUpdate()
+        
+        fetchFromLocal()
+        fetchFromApi()
+    }
+    
+    func subscribeOnFRCUpdates() {
+        keeper.persistentObservable.controllerDidChangeSubject
+            .receive(on: DispatchQueue.main)
+            .sink { changes in
+                if changes.isEmpty {
+                    self.tableView.beginUpdates()
+                    print("->Begin TableView UPDATE")
+                    return
+                }
+                
+                for change in changes {
+                    switch change {
+                    case .inserted(at: let indexPath):
+                        self.tableView.insertRows(at: [indexPath], with: .fade)
+                    case .deleted(from: let indexPath):
+                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                }
+                self.tableView.endUpdates()
+                print("<-End TableView UPDATE")
             }
             .store(in: &cancellabels)
     }
-}
-
-//MARK: NSFetchedResultsController
-extension UserViewController: NSFetchedResultsControllerDelegate {
-    func initializeFetchedResultsController() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: UserEntityManagedObj.entityName)
-        let nameSortDescriptor = NSSortDescriptor(key: #keyPath(UserEntityManagedObj.name), ascending: true)
-        request.sortDescriptors = [nameSortDescriptor]
-        
-        let moc = CoreDataStack.persistent.viewContext
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: "rootCache")
-        fetchedResultsController.delegate = self
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("Failed to initialize FetchedResultsController: \(error)")
-        }
+    
+    func subscribeOnDataUpdate() {
+        keeper.persistentObservable.dataSubject
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                    print("Error fetching users: \(error)")
+                }
+            }, receiveValue: { users in
+                print("Fetched \(users.count) users")
+            })
+            .store(in: &cancellabels)
     }
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView.beginUpdates()
+    func fetchFromLocal() {
+        var cancellableFetch: AnyCancellable?
+        cancellableFetch = keeper.persistentFetchPublisher
+            .sink { compl in
+                cancellableFetch?.cancel()
+                print("fetch request completed")
+            } receiveValue: { manageObjs in
+                print("Fetched \(manageObjs.count) users")
+                let VMs = manageObjs.map { UserViewModel(managedEntity: $0) }
+            }
     }
-     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .delete:
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-        default:
-            break
-        }
-    }
-     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-        case .move:
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        @unknown default:
-            fatalError("Unknown case in: \(#function)")
-        }
-    }
-     
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
+    
+    func fetchFromApi() {
+        var cancellableRequest: AnyCancellable?
+        cancellableRequest = keeper.fetchRemote()
+            .sink { compl in
+                cancellableRequest?.cancel()
+                print(print("API request completed"))
+            } receiveValue: { _ in
+            }
     }
 }
 
 //MARK: UITableViewDataSource
 extension UserViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = fetchedResultsController.sections else {
+        guard let sections = fetchedResultsController?.sections else {
             fatalError("No sections in fetchedResultsController")
         }
         
@@ -94,7 +96,7 @@ extension UserViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections else {
+        guard let sections = fetchedResultsController?.sections else {
             fatalError("No sections in fetchedResultsController")
         }
         
@@ -137,7 +139,7 @@ extension UserViewController {
         else {
             fatalError("Attempt to configure cell without a managed obj")
         }
-        cell?.configureCell(with: UserEntity(from: moUserEntity))
+        cell?.configureCell(with: UserViewModel(managedEntity: moUserEntity))
         return cell ?? UITableViewCell()
     }
 }

@@ -25,7 +25,7 @@ extension AddressManagedObj {
     
     //model dependency
     @NSManaged public var geo: GeoManagedObj?
-    @NSManaged public var user: UserEntityManagedObj?
+    @NSManaged public var user: UserEntityManagedObj
 
 }
 

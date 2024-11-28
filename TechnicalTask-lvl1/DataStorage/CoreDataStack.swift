@@ -39,17 +39,21 @@ class CoreDataStack {
         }
     }
     
-    func create(from array: [UserEntity]) {
+    func create(entitiesFrom array: [UserEntity]) {
         for user in array {
-            if (existing(email: user.email)) {
-                continue
-            }
-            let _ = UserEntityManagedObj(context: viewContext, user: user)
+            self.create(entity: user)
+        }
+    }
+    
+    func create(entity: UserEntity) {
+        if !existing(email: entity.email) {
+            let _ = UserEntityManagedObj(context: viewContext, user: entity)
+            saveContext()
         }
     }
     
     func existing(email: String) -> Bool {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: UserEntityManagedObj.entityName)
+        let fetchRequest = NSFetchRequest<UserEntityManagedObj>(entityName: UserEntityManagedObj.entityName)
         fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(UserEntityManagedObj.email), email)
         do {
             let result = try viewContext.count(for: fetchRequest)

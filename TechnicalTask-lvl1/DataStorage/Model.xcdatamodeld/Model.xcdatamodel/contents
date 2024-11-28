@@ -22,11 +22,11 @@
     <entity name="UserEntity" representedClassName="UserEntityManagedObj" syncable="YES">
         <attribute name="email" attributeType="String" defaultValueString=""/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
         <attribute name="phone" optional="YES" attributeType="String"/>
-        <attribute name="userName" attributeType="String" defaultValueString=""/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
         <attribute name="website" optional="YES" attributeType="String"/>
         <relationship name="address" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="user" inverseEntity="Address"/>
-        <relationship name="company" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="user" inverseEntity="Company"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="user" inverseEntity="Company"/>
     </entity>
 </model>

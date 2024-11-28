@@ -23,7 +23,7 @@ extension CompanyManagedObj {
     @NSManaged public var bs: String?
     
     //model dependency
-    @NSManaged public var user: UserEntityManagedObj?
+    @NSManaged public var user: UserEntityManagedObj
 }
 
 extension CompanyManagedObj : Identifiable {

@@ -18,12 +18,12 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var addressMainLabel: UILabel!
     @IBOutlet weak var addressSecondaryLabel: UILabel!
     
-    private var entity: UserEntity! {
+    private var model: UserViewModel! {
         didSet {
-            usernameLabel?.text = entity.name
-            emailLabel?.text = entity.email
-            addressMainLabel?.text = entity.address.city
-            addressSecondaryLabel?.text = entity.address.street
+            usernameLabel?.text = model.name
+            emailLabel?.text = model.email
+            addressMainLabel?.text = model.city
+            addressSecondaryLabel?.text = model.street
         }
     }
     
@@ -39,8 +39,8 @@ class UserCell: UITableViewCell {
     
     var cancellable: AnyCancellable? // 1
     
-    func configureCell(with entity: UserEntity) {
-        self.entity = entity
+    func configureCell(with model: UserViewModel) {
+        self.model = model
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {}

@@ -7,19 +7,57 @@
 
 import Foundation
 import Combine
-
-protocol DataKeeperOutput {
-    //map data on UserEntity
-    //publish Remote UserEntity
-}
+import CoreData
 
 class DataKeeper {
-    private let requester = HTTPRequester.shared
+    let persistentStorage = CoreDataStack.persistent
+    //let tempStorage = CoreDataStack.temp
     
-    func fetchRemote() -> AnyPublisher<[UserEntity], Never> {
-        return requester.initRequest()
+    private var fetchRequest: NSFetchRequest<UserEntityManagedObj>
+    var persistentFetchPublisher: AnyPublisher<[UserEntityManagedObj], Error>
+    var persistentObservable: CoreDataObservable<UserEntityManagedObj>
+    
+    init() {
+        fetchRequest = UserEntityManagedObj.fetchRequest()
+        let nameSortDescriptor = NSSortDescriptor(key: #keyPath(UserEntityManagedObj.name), ascending: true)
+        fetchRequest.sortDescriptors = [nameSortDescriptor]
+        
+        persistentFetchPublisher = persistentStorage.viewContext
+            .fetchPublisher(fetchRequest)
+        
+        persistentObservable = CoreDataObservable<UserEntityManagedObj>(
+            fetchRequest: fetchRequest,
+            context: persistentStorage.viewContext
+        )
+    }
+    
+    func fetchRemote() -> AnyPublisher<Void, Error> {
+        let result = HTTPRequester().initRequest()
             .decode(type: [UserEntity].self, decoder: JSONDecoder())
             .replaceError(with: [UserEntity]())
+            .flatMap { list in
+                Publishers.Sequence(sequence: list)
+                    .flatMap { el in
+                        Future<Void, Error> { promise in
+                            let _ = self.persistentStorage.create(entity: el)// UserEntityManagedObj(context: context, user: el)
+                            promise(.success(()))
+                        }
+                    }
+            }
+            .collect()
+            .flatMap { _ in
+                Future<Void, Error> { promise in
+                    do {
+                        try self.persistentStorage.viewContext.save()
+                        promise(.success(()))
+                    } catch {
+                        promise(.failure(error))
+                    }
+                }
+            }
             .eraseToAnyPublisher()
+        
+        return result
     }
+    
 }

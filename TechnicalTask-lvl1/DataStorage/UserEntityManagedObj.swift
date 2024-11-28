@@ -21,9 +21,9 @@ extension UserEntityManagedObj {
 
     @NSManaged public var email: String
     @NSManaged public var id: Int32
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var phone: String?
-    @NSManaged public var userName: String
+    @NSManaged public var userName: String?
     @NSManaged public var website: String?
     
     //model dependency

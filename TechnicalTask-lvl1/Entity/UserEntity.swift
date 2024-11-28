@@ -18,8 +18,8 @@ public struct UserEntity: Codable {
     
     init(from managedEntity: UserEntityManagedObj) {
         self.id = Int(managedEntity.id)
-        self.name = managedEntity.name ?? ""
-        self.username = managedEntity.userName
+        self.name = managedEntity.name
+        self.username = managedEntity.userName ?? ""
         self.email = managedEntity.email
         self.phone = managedEntity.phone
         self.website = managedEntity.website
