@@ -11,7 +11,6 @@ import CoreData
 
 class DataKeeper {
     let persistentStorage = CoreDataStack.persistent
-    //let tempStorage = CoreDataStack.temp
     
     private var fetchRequest: NSFetchRequest<UserEntityManagedObj>
     var persistentFetchPublisher: AnyPublisher<[UserEntityManagedObj], Error>
