@@ -22,10 +22,14 @@
 		FA4800852CF53947003432E8 /* UserEntityManagedObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800842CF5393B003432E8 /* UserEntityManagedObj.swift */; };
 		FA4800882CF54250003432E8 /* HTTPRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800872CF54247003432E8 /* HTTPRequester.swift */; };
 		FA48008A2CF5F560003432E8 /* DataKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800892CF5F554003432E8 /* DataKeeper.swift */; };
-		FA48008C2CF6147A003432E8 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48008B2CF6144C003432E8 /* ConnectivityManager.swift */; };
 		FA48008E2CF707C1003432E8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48008D2CF707B8003432E8 /* CoreDataStack.swift */; };
 		FA4800922CF777C6003432E8 /* CoreData+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800912CF7739C003432E8 /* CoreData+Combine.swift */; };
-		FA4800982CF7C1A2003432E8 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800972CF7C19C003432E8 /* UserViewModel.swift */; };
+		FA4800982CF7C1A2003432E8 /* UserPresntationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800972CF7C19C003432E8 /* UserPresntationModel.swift */; };
+		FAEA221F2D0896F30083F4CA /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA221E2D0896ED0083F4CA /* UsersViewModel.swift */; };
+		FAEA22212D08978F0083F4CA /* ApiRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22202D08974C0083F4CA /* ApiRequester.swift */; };
+		FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */; };
+		FAEA22252D0997EF0083F4CA /* UsersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22242D0997B50083F4CA /* UsersDataService.swift */; };
+		FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,10 +50,14 @@
 		FA4800842CF5393B003432E8 /* UserEntityManagedObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntityManagedObj.swift; sourceTree = "<group>"; };
 		FA4800872CF54247003432E8 /* HTTPRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequester.swift; sourceTree = "<group>"; };
 		FA4800892CF5F554003432E8 /* DataKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKeeper.swift; sourceTree = "<group>"; };
-		FA48008B2CF6144C003432E8 /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		FA48008D2CF707B8003432E8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FA4800912CF7739C003432E8 /* CoreData+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Combine.swift"; sourceTree = "<group>"; };
-		FA4800972CF7C19C003432E8 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		FA4800972CF7C19C003432E8 /* UserPresntationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresntationModel.swift; sourceTree = "<group>"; };
+		FAEA221E2D0896ED0083F4CA /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		FAEA22202D08974C0083F4CA /* ApiRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequester.swift; sourceTree = "<group>"; };
+		FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
+		FAEA22242D0997B50083F4CA /* UsersDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataService.swift; sourceTree = "<group>"; };
+		FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataServiceImplementation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +122,8 @@
 		CE9F092A2CEF65CA00CFA6B5 /* UserModule */ = {
 			isa = PBXGroup;
 			children = (
-				FA4800972CF7C19C003432E8 /* UserViewModel.swift */,
+				FAEA221E2D0896ED0083F4CA /* UsersViewModel.swift */,
+				FA4800972CF7C19C003432E8 /* UserPresntationModel.swift */,
 				FA4800752CF4D845003432E8 /* CustomViews */,
 				CE9F09182CEF646D00CFA6B5 /* UserViewController.swift */,
 			);
@@ -155,7 +164,10 @@
 		FA4800862CF5423C003432E8 /* DataAccessLayer */ = {
 			isa = PBXGroup;
 			children = (
-				FA48008B2CF6144C003432E8 /* ConnectivityManager.swift */,
+				FAEA22242D0997B50083F4CA /* UsersDataService.swift */,
+				FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */,
+				FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */,
+				FAEA22202D08974C0083F4CA /* ApiRequester.swift */,
 				FA4800892CF5F554003432E8 /* DataKeeper.swift */,
 				FA4800872CF54247003432E8 /* HTTPRequester.swift */,
 			);
@@ -234,19 +246,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4800812CF53922003432E8 /* AddressManagedObj.swift in Sources */,
+				FAEA22252D0997EF0083F4CA /* UsersDataService.swift in Sources */,
 				FA48008A2CF5F560003432E8 /* DataKeeper.swift in Sources */,
 				FA4800712CF498C1003432E8 /* UserCell.swift in Sources */,
 				CE9F09192CEF646D00CFA6B5 /* UserViewController.swift in Sources */,
 				CE9F09152CEF646D00CFA6B5 /* AppDelegate.swift in Sources */,
+				FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */,
 				FA4800742CF4A72A003432E8 /* UserEntity.swift in Sources */,
 				FA4800922CF777C6003432E8 /* CoreData+Combine.swift in Sources */,
-				FA48008C2CF6147A003432E8 /* ConnectivityManager.swift in Sources */,
+				FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */,
+				FAEA221F2D0896F30083F4CA /* UsersViewModel.swift in Sources */,
 				FA48008E2CF707C1003432E8 /* CoreDataStack.swift in Sources */,
 				FA4800882CF54250003432E8 /* HTTPRequester.swift in Sources */,
 				CE9F09172CEF646D00CFA6B5 /* SceneDelegate.swift in Sources */,
+				FAEA22212D08978F0083F4CA /* ApiRequester.swift in Sources */,
 				FA48007F2CF53917003432E8 /* GeoManagedObj.swift in Sources */,
 				FA4800852CF53947003432E8 /* UserEntityManagedObj.swift in Sources */,
-				FA4800982CF7C1A2003432E8 /* UserViewModel.swift in Sources */,
+				FA4800982CF7C1A2003432E8 /* UserPresntationModel.swift in Sources */,
 				FA48007B2CF4E99F003432E8 /* Model.xcdatamodeld in Sources */,
 				FA4800832CF53934003432E8 /* CompanyManagedObj.swift in Sources */,
 			);

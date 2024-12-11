@@ -70,7 +70,7 @@ class UserViewController: UITableViewController {
                 print("fetch request completed")
             } receiveValue: { manageObjs in
                 print("Fetched \(manageObjs.count) users")
-                let VMs = manageObjs.map { UserViewModel(managedEntity: $0) }
+                let VMs = manageObjs.map { UserPresntationModel(managedEntity: $0) }
             }
     }
     
@@ -139,7 +139,7 @@ extension UserViewController {
         else {
             fatalError("Attempt to configure cell without a managed obj")
         }
-        cell?.configureCell(with: UserViewModel(managedEntity: moUserEntity))
+        cell?.configureCell(with: UserPresntationModel(managedEntity: moUserEntity))
         return cell ?? UITableViewCell()
     }
 }

@@ -18,7 +18,7 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var addressMainLabel: UILabel!
     @IBOutlet weak var addressSecondaryLabel: UILabel!
     
-    private var model: UserViewModel! {
+    private var model: UserPresntationModel! {
         didSet {
             usernameLabel?.text = model.name
             emailLabel?.text = model.email
@@ -39,7 +39,7 @@ class UserCell: UITableViewCell {
     
     var cancellable: AnyCancellable? // 1
     
-    func configureCell(with model: UserViewModel) {
+    func configureCell(with model: UserPresntationModel) {
         self.model = model
     }
 
