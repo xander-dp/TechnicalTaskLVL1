@@ -5,9 +5,9 @@
 //  Created by Oleksandr Savchenko on 11.12.24.
 //
 
-public struct UserEntity: Codable {
-    let name: String
+struct UserEntity {
     let email: String
-    let street: String
+    let name: String
     let city: String
+    let street: String
 }

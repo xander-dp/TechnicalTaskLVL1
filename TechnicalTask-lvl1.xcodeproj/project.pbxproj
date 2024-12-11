@@ -31,6 +31,9 @@
 		FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */; };
 		FAEA22292D09E9D80083F4CA /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22282D09E9D60083F4CA /* UserEntity.swift */; };
 		FAEA222C2D09F1EB0083F4CA /* Task+store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA222B2D09F1DE0083F4CA /* Task+store.swift */; };
+		FAEA222F2D09F68C0083F4CA /* UserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAEA222D2D09F68C0083F4CA /* UserDataModel.xcdatamodeld */; };
+		FAEA22312D09F94B0083F4CA /* UserEntityMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22302D09F9410083F4CA /* UserEntityMO.swift */; };
+		FAEA22332D09FC970083F4CA /* DataStorageFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22322D09FC8D0083F4CA /* DataStorageFacade.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataServiceImplementation.swift; sourceTree = "<group>"; };
 		FAEA22282D09E9D60083F4CA /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		FAEA222B2D09F1DE0083F4CA /* Task+store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+store.swift"; sourceTree = "<group>"; };
+		FAEA222E2D09F68C0083F4CA /* UserDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserDataModel.xcdatamodel; sourceTree = "<group>"; };
+		FAEA22302D09F9410083F4CA /* UserEntityMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntityMO.swift; sourceTree = "<group>"; };
+		FAEA22322D09FC8D0083F4CA /* DataStorageFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageFacade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,8 @@
 		FA4800782CF4E979003432E8 /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				FAEA22322D09FC8D0083F4CA /* DataStorageFacade.swift */,
+				FAEA22302D09F9410083F4CA /* UserEntityMO.swift */,
 				FA4800912CF7739C003432E8 /* CoreData+Combine.swift */,
 				FA48008D2CF707B8003432E8 /* CoreDataStack.swift */,
 				FA4800842CF5393B003432E8 /* UserEntityManagedObj.swift */,
@@ -160,6 +168,7 @@
 				FA4800802CF5391D003432E8 /* AddressManagedObj.swift */,
 				FA48007E2CF53908003432E8 /* GeoManagedObj.swift */,
 				FA4800792CF4E99F003432E8 /* Model.xcdatamodeld */,
+				FAEA222D2D09F68C0083F4CA /* UserDataModel.xcdatamodeld */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -269,12 +278,15 @@
 				FA4800922CF777C6003432E8 /* CoreData+Combine.swift in Sources */,
 				FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */,
 				FAEA221F2D0896F30083F4CA /* UsersViewModel.swift in Sources */,
+				FAEA22312D09F94B0083F4CA /* UserEntityMO.swift in Sources */,
 				FA48008E2CF707C1003432E8 /* CoreDataStack.swift in Sources */,
 				FA4800882CF54250003432E8 /* UsersRequester.swift in Sources */,
 				CE9F09172CEF646D00CFA6B5 /* SceneDelegate.swift in Sources */,
+				FAEA222F2D09F68C0083F4CA /* UserDataModel.xcdatamodeld in Sources */,
 				FA48007F2CF53917003432E8 /* GeoManagedObj.swift in Sources */,
 				FA4800852CF53947003432E8 /* UserEntityManagedObj.swift in Sources */,
 				FA4800982CF7C1A2003432E8 /* UserPresntationModel.swift in Sources */,
+				FAEA22332D09FC970083F4CA /* DataStorageFacade.swift in Sources */,
 				FA48007B2CF4E99F003432E8 /* Model.xcdatamodeld in Sources */,
 				FA4800832CF53934003432E8 /* CompanyManagedObj.swift in Sources */,
 			);
@@ -508,6 +520,16 @@
 			);
 			currentVersion = FA48007A2CF4E99F003432E8 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		FAEA222D2D09F68C0083F4CA /* UserDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAEA222E2D09F68C0083F4CA /* UserDataModel.xcdatamodel */,
+			);
+			currentVersion = FAEA222E2D09F68C0083F4CA /* UserDataModel.xcdatamodel */;
+			path = UserDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
