@@ -30,33 +30,33 @@ class DataKeeper {
         )
     }
     
-    func fetchRemote() -> AnyPublisher<Void, Error> {
-        let result = HTTPRequester().initRequest()
-            .decode(type: [UserEntity].self, decoder: JSONDecoder())
-            .replaceError(with: [UserEntity]())
-            .flatMap { list in
-                Publishers.Sequence(sequence: list)
-                    .flatMap { el in
-                        Future<Void, Error> { promise in
-                            let _ = self.persistentStorage.create(entity: el)// UserEntityManagedObj(context: context, user: el)
-                            promise(.success(()))
-                        }
-                    }
-            }
-            .collect()
-            .flatMap { _ in
-                Future<Void, Error> { promise in
-                    do {
-                        try self.persistentStorage.viewContext.save()
-                        promise(.success(()))
-                    } catch {
-                        promise(.failure(error))
-                    }
-                }
-            }
-            .eraseToAnyPublisher()
-        
-        return result
-    }
+//    func fetchRemote() -> AnyPublisher<Void, Error> {
+//        let result = UsersRequester().initRequest()
+//            .decode(type: [UserEntity].self, decoder: JSONDecoder())
+//            .replaceError(with: [UserEntity]())
+//            .flatMap { list in
+//                Publishers.Sequence(sequence: list)
+//                    .flatMap { el in
+//                        Future<Void, Error> { promise in
+//                            let _ = self.persistentStorage.create(entity: el)// UserEntityManagedObj(context: context, user: el)
+//                            promise(.success(()))
+//                        }
+//                    }
+//            }
+//            .collect()
+//            .flatMap { _ in
+//                Future<Void, Error> { promise in
+//                    do {
+//                        try self.persistentStorage.viewContext.save()
+//                        promise(.success(()))
+//                    } catch {
+//                        promise(.failure(error))
+//                    }
+//                }
+//            }
+//            .eraseToAnyPublisher()
+//        
+//        return result
+//    }
     
 }

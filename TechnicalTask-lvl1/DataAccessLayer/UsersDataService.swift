@@ -6,7 +6,7 @@
 //
 
 protocol UsersDataService {
-    func fetchDataList() -> [UserEntity]
+    func fetchDataList() async throws -> [UserEntity]
     func save(_ entity: UserEntity) -> Bool
     func delete(_ entity: UserEntity) -> Bool
 }

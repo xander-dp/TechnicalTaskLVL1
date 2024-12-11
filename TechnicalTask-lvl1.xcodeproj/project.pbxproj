@@ -14,22 +14,23 @@
 		CE9F09212CEF647100CFA6B5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE9F09202CEF647100CFA6B5 /* Base */; };
 		FA4800702CF498C1003432E8 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA48006F2CF498C1003432E8 /* UserCell.xib */; };
 		FA4800712CF498C1003432E8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48006E2CF498C1003432E8 /* UserCell.swift */; };
-		FA4800742CF4A72A003432E8 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800732CF4A725003432E8 /* UserEntity.swift */; };
+		FA4800742CF4A72A003432E8 /* DALUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800732CF4A725003432E8 /* DALUser.swift */; };
 		FA48007B2CF4E99F003432E8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA4800792CF4E99F003432E8 /* Model.xcdatamodeld */; };
 		FA48007F2CF53917003432E8 /* GeoManagedObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48007E2CF53908003432E8 /* GeoManagedObj.swift */; };
 		FA4800812CF53922003432E8 /* AddressManagedObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800802CF5391D003432E8 /* AddressManagedObj.swift */; };
 		FA4800832CF53934003432E8 /* CompanyManagedObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800822CF53929003432E8 /* CompanyManagedObj.swift */; };
 		FA4800852CF53947003432E8 /* UserEntityManagedObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800842CF5393B003432E8 /* UserEntityManagedObj.swift */; };
-		FA4800882CF54250003432E8 /* HTTPRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800872CF54247003432E8 /* HTTPRequester.swift */; };
+		FA4800882CF54250003432E8 /* UsersRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800872CF54247003432E8 /* UsersRequester.swift */; };
 		FA48008A2CF5F560003432E8 /* DataKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800892CF5F554003432E8 /* DataKeeper.swift */; };
 		FA48008E2CF707C1003432E8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48008D2CF707B8003432E8 /* CoreDataStack.swift */; };
 		FA4800922CF777C6003432E8 /* CoreData+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800912CF7739C003432E8 /* CoreData+Combine.swift */; };
 		FA4800982CF7C1A2003432E8 /* UserPresntationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800972CF7C19C003432E8 /* UserPresntationModel.swift */; };
 		FAEA221F2D0896F30083F4CA /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA221E2D0896ED0083F4CA /* UsersViewModel.swift */; };
-		FAEA22212D08978F0083F4CA /* ApiRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22202D08974C0083F4CA /* ApiRequester.swift */; };
 		FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */; };
 		FAEA22252D0997EF0083F4CA /* UsersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22242D0997B50083F4CA /* UsersDataService.swift */; };
 		FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */; };
+		FAEA22292D09E9D80083F4CA /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22282D09E9D60083F4CA /* UserEntity.swift */; };
+		FAEA222C2D09F1EB0083F4CA /* Task+store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA222B2D09F1DE0083F4CA /* Task+store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,22 +43,23 @@
 		CE9F09222CEF647100CFA6B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA48006E2CF498C1003432E8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		FA48006F2CF498C1003432E8 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
-		FA4800732CF4A725003432E8 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		FA4800732CF4A725003432E8 /* DALUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DALUser.swift; sourceTree = "<group>"; };
 		FA48007A2CF4E99F003432E8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FA48007E2CF53908003432E8 /* GeoManagedObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoManagedObj.swift; sourceTree = "<group>"; };
 		FA4800802CF5391D003432E8 /* AddressManagedObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressManagedObj.swift; sourceTree = "<group>"; };
 		FA4800822CF53929003432E8 /* CompanyManagedObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyManagedObj.swift; sourceTree = "<group>"; };
 		FA4800842CF5393B003432E8 /* UserEntityManagedObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntityManagedObj.swift; sourceTree = "<group>"; };
-		FA4800872CF54247003432E8 /* HTTPRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequester.swift; sourceTree = "<group>"; };
+		FA4800872CF54247003432E8 /* UsersRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRequester.swift; sourceTree = "<group>"; };
 		FA4800892CF5F554003432E8 /* DataKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKeeper.swift; sourceTree = "<group>"; };
 		FA48008D2CF707B8003432E8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FA4800912CF7739C003432E8 /* CoreData+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Combine.swift"; sourceTree = "<group>"; };
 		FA4800972CF7C19C003432E8 /* UserPresntationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresntationModel.swift; sourceTree = "<group>"; };
 		FAEA221E2D0896ED0083F4CA /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
-		FAEA22202D08974C0083F4CA /* ApiRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequester.swift; sourceTree = "<group>"; };
 		FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		FAEA22242D0997B50083F4CA /* UsersDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataService.swift; sourceTree = "<group>"; };
 		FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataServiceImplementation.swift; sourceTree = "<group>"; };
+		FAEA22282D09E9D60083F4CA /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		FAEA222B2D09F1DE0083F4CA /* Task+store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+store.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		CE9F09132CEF646D00CFA6B5 /* TechnicalTask-lvl1 */ = {
 			isa = PBXGroup;
 			children = (
+				FAEA222A2D09F1D40083F4CA /* Utils */,
 				FA4800862CF5423C003432E8 /* DataAccessLayer */,
 				FA4800782CF4E979003432E8 /* DataStorage */,
 				FA4800722CF4A165003432E8 /* Entity */,
@@ -133,7 +136,7 @@
 		FA4800722CF4A165003432E8 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				FA4800732CF4A725003432E8 /* UserEntity.swift */,
+				FAEA22282D09E9D60083F4CA /* UserEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -164,14 +167,22 @@
 		FA4800862CF5423C003432E8 /* DataAccessLayer */ = {
 			isa = PBXGroup;
 			children = (
+				FA4800732CF4A725003432E8 /* DALUser.swift */,
 				FAEA22242D0997B50083F4CA /* UsersDataService.swift */,
 				FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */,
 				FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */,
-				FAEA22202D08974C0083F4CA /* ApiRequester.swift */,
 				FA4800892CF5F554003432E8 /* DataKeeper.swift */,
-				FA4800872CF54247003432E8 /* HTTPRequester.swift */,
+				FA4800872CF54247003432E8 /* UsersRequester.swift */,
 			);
 			path = DataAccessLayer;
+			sourceTree = "<group>";
+		};
+		FAEA222A2D09F1D40083F4CA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FAEA222B2D09F1DE0083F4CA /* Task+store.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,14 +263,15 @@
 				CE9F09192CEF646D00CFA6B5 /* UserViewController.swift in Sources */,
 				CE9F09152CEF646D00CFA6B5 /* AppDelegate.swift in Sources */,
 				FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */,
-				FA4800742CF4A72A003432E8 /* UserEntity.swift in Sources */,
+				FAEA222C2D09F1EB0083F4CA /* Task+store.swift in Sources */,
+				FA4800742CF4A72A003432E8 /* DALUser.swift in Sources */,
+				FAEA22292D09E9D80083F4CA /* UserEntity.swift in Sources */,
 				FA4800922CF777C6003432E8 /* CoreData+Combine.swift in Sources */,
 				FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */,
 				FAEA221F2D0896F30083F4CA /* UsersViewModel.swift in Sources */,
 				FA48008E2CF707C1003432E8 /* CoreDataStack.swift in Sources */,
-				FA4800882CF54250003432E8 /* HTTPRequester.swift in Sources */,
+				FA4800882CF54250003432E8 /* UsersRequester.swift in Sources */,
 				CE9F09172CEF646D00CFA6B5 /* SceneDelegate.swift in Sources */,
-				FAEA22212D08978F0083F4CA /* ApiRequester.swift in Sources */,
 				FA48007F2CF53917003432E8 /* GeoManagedObj.swift in Sources */,
 				FA4800852CF53947003432E8 /* UserEntityManagedObj.swift in Sources */,
 				FA4800982CF7C1A2003432E8 /* UserPresntationModel.swift in Sources */,

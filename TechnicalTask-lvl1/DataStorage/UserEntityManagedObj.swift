@@ -37,7 +37,7 @@ extension UserEntityManagedObj : Identifiable {
 }
 
 extension UserEntityManagedObj {
-    convenience init(context: NSManagedObjectContext, user: UserEntity) {
+    convenience init(context: NSManagedObjectContext, user: DALUser) {
         self.init(context: context)
         
         self.id = Int32(user.id)

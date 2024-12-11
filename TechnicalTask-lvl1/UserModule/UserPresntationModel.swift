@@ -13,7 +13,7 @@ struct UserPresntationModel {
 }
 
 extension UserPresntationModel {
-    init(entity: UserEntity) {
+    init(entity: DALUser) {
         self.name = entity.name
         self.email = entity.email
         self.city = entity.address.city

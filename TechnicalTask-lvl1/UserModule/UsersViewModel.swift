@@ -11,8 +11,10 @@ import Combine
 final class UsersViewModel: ObservableObject {
     @Published var usersList = [UserEntity]()
     @Published var connectionEstablished = false
+    @Published var errorMessage: String?
     
     private let dataService: any UsersDataService
+    private var cancellables = Set<AnyCancellable>()
     
     enum OperationResult {
         case success
@@ -28,7 +30,14 @@ final class UsersViewModel: ObservableObject {
     }
     
     func fetchUsersList() {
-        self.usersList = self.dataService.fetchDataList()
+        Task {
+            do {
+                self.usersList = try await self.dataService.fetchDataList()
+            } catch {
+                self.errorMessage = error.localizedDescription
+            }
+        }
+        .store(in: &cancellables)
     }
     
     func deleteUser(at index: Int) -> OperationResult {
@@ -39,5 +48,9 @@ final class UsersViewModel: ObservableObject {
         } else {
             return .failure
         }
+    }
+    
+    deinit {
+        cancellables.removeAll()
     }
 }

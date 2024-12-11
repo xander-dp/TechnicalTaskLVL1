@@ -39,13 +39,13 @@ class CoreDataStack {
         }
     }
     
-    func create(entitiesFrom array: [UserEntity]) {
+    func create(entitiesFrom array: [DALUser]) {
         for user in array {
             self.create(entity: user)
         }
     }
     
-    func create(entity: UserEntity) {
+    func create(entity: DALUser) {
         if !existing(email: entity.email) {
             let _ = UserEntityManagedObj(context: viewContext, user: entity)
             saveContext()

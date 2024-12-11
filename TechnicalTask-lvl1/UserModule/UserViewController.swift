@@ -10,6 +10,12 @@ class UserViewController: UITableViewController {
 
     let keeper = DataKeeper()
     override func viewDidLoad() {
+        let vm = UsersViewModel(dataService: UsersDataServiceImplementation(
+            requester: UsersRequester("https://jsonplaceholder.typicode.com/users")),
+                                connectivityStatePublisher: Just(true).eraseToAnyPublisher())
+        
+        vm.fetchUsersList()
+        
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = .white
         self.tableView.rowHeight = UITableView.automaticDimension
@@ -75,13 +81,13 @@ class UserViewController: UITableViewController {
     }
     
     func fetchFromApi() {
-        var cancellableRequest: AnyCancellable?
-        cancellableRequest = keeper.fetchRemote()
-            .sink { compl in
-                cancellableRequest?.cancel()
-                print(print("API request completed"))
-            } receiveValue: { _ in
-            }
+//        var cancellableRequest: AnyCancellable?
+//        cancellableRequest = keeper.fetchRemote()
+//            .sink { compl in
+//                cancellableRequest?.cancel()
+//                print(print("API request completed"))
+//            } receiveValue: { _ in
+//            }
     }
 }
 

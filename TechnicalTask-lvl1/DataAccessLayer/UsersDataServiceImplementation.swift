@@ -6,10 +6,22 @@
 //
 
 final class UsersDataServiceImplementation: UsersDataService {
+    let requester: UsersRequester
     
-    func fetchDataList() -> [UserEntity] {
+    init(requester: UsersRequester) {
+        self.requester = requester
+    }
+    
+    func fetchDataList() async throws -> [UserEntity] {
         //stub
         print("\(#function) called")
+        
+        do {
+            try await requester.executeGetRequest()
+        } catch {
+            print(error)
+        }
+        
         return [UserEntity]()
     }
     
