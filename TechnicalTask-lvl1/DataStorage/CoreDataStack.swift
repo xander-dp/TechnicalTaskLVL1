@@ -7,75 +7,96 @@
 import Foundation
 import CoreData
 
-class CoreDataStack {
-    static let modelName = "Model"
-    
-    enum StorageType {
-        case persistent
-        case temporary
-    }
+enum DataStorageError: Error {
+    case errorDuringDataGathering
+    case recordAlreadyExist(String)
+    case unableToChangeData(String)
+    case userNotExist(String)
+}
+
+final class CoreDataStack: DataStorageFacade {
+    static let modelName = "UserDataModel" //move to constants
     
     private let container: NSPersistentContainer
     
-    static var persistent: CoreDataStack = {
-        return CoreDataStack(name: modelName, in: .persistent)
-    }()
-    
-    static var temp: CoreDataStack = {
-        return CoreDataStack(name: modelName, in: .temporary)
-    }()
-    
-    var viewContext: NSManagedObjectContext {
+    var managedContext: NSManagedObjectContext {
         return self.container.viewContext
     }
     
-    func saveContext() {
-        guard viewContext.hasChanges else { return }
-        do {
-            try viewContext.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+    init(name: String) {
+        self.container = NSPersistentContainer(name: name)
+        
+        self.container.loadPersistentStores { (storeDescription, error) in
+            if let error = error {
+                fatalError("Unable to load store: \(error)")
+            }
         }
     }
     
-    func create(entitiesFrom array: [DALUser]) {
-        for user in array {
-            self.create(entity: user)
-        }
-    }
-    
-    func create(entity: DALUser) {
+    func create(entity: UserEntity) throws {
         if !existing(email: entity.email) {
-            let _ = UserEntityManagedObj(context: viewContext, user: entity)
-            saveContext()
+            let user = UserEntityMO(context: self.managedContext, with: entity)
+            
+            do {
+                try user.managedObjectContext?.save()
+            } catch {
+                print("Error during Data creation: \(error)")
+                throw DataStorageError.unableToChangeData(error.localizedDescription)
+            }
+        } else {
+            throw DataStorageError.recordAlreadyExist(entity.email)
         }
     }
     
-    func existing(email: String) -> Bool {
-        let fetchRequest = NSFetchRequest<UserEntityManagedObj>(entityName: UserEntityManagedObj.entityName)
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(UserEntityManagedObj.email), email)
+    func read() throws -> [UserEntity] {
+        let fetchRequest = UserEntityMO.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "name", ascending: true)]
+        
         do {
-            let result = try viewContext.count(for: fetchRequest)
-            return result > 0
+            let data = try self.managedContext.fetch(fetchRequest)
+            return data.map { $0.toUserEntity() }
         } catch {
+            throw DataStorageError.errorDuringDataGathering
+        }
+    }
+    
+    func delete(entity: UserEntity) throws {
+        if let entity = getEntity(with: entity.email) {
+            self.managedContext.delete(entity)
+            do {
+                try managedContext.save()
+            } catch {
+                print("Error during deletion of \(entity): \(error)")
+                throw DataStorageError.unableToChangeData(error.localizedDescription)
+            }
+        } else {
+            throw DataStorageError.userNotExist(entity.email)
+        }
+    }
+    
+    private func existing(email: String) -> Bool {
+        if getEntity(with: email) != nil {
+            return true
+        } else {
             return false
         }
     }
     
-    private init(name: String, in storageType: StorageType) {
-        self.container = NSPersistentContainer(name: name)
-        
-        if storageType  == .temporary {
-            let description = NSPersistentStoreDescription()
-            description.url = URL(fileURLWithPath: "/dev/null")
-            self.container.persistentStoreDescriptions = [description]
-        }
-        
-        self.container.loadPersistentStores { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unable to load store \(error), \(error.userInfo)")
-            }
-        }
-    }
+    private func getEntity(with email: String) -> UserEntityMO? {
+          do {
+              let lhs = NSExpression(forConstantValue: email)
+              let rhs = NSExpression(forKeyPath: "email")
+              let predicate = NSComparisonPredicate(leftExpression: lhs, rightExpression: rhs, modifier: .direct, type: .equalTo)
+              
+              let request = UserEntityMO.fetchRequest()
+              request.predicate = predicate
+              request.fetchLimit = 1
+              
+              let entity = try self.managedContext.fetch(request)
+              return entity.first
+          } catch {
+              print("Unable to find entity with email: \(email)")
+              return nil
+          }
+      }
 }

@@ -18,8 +18,8 @@ final class UserEntityMO: NSManagedObject, Identifiable {
         return NSFetchRequest<UserEntityMO>(entityName: UserEntityMO.entityName)
     }
     
-    convenience init(with entity: UserEntity) {
-        self.init()
+    convenience init(context: NSManagedObjectContext, with entity: UserEntity) {
+        self.init(context: context)
 
         self.email = entity.email
         self.name = entity.name

@@ -6,7 +6,7 @@
 //
 
 protocol DataStorageFacade {
-    func create(entity: UserEntity)
-    func read() -> [UserEntity]
-    func delete(entity: UserEntity)
+    func create(entity: UserEntity) throws
+    func read() throws -> [UserEntity]
+    func delete(entity: UserEntity) throws
 }
