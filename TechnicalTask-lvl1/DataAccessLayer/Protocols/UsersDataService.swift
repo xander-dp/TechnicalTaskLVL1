@@ -6,7 +6,8 @@
 //
 
 protocol UsersDataService {
-    func fetchDataList() async throws -> [UserEntity]
+    func fetchLocalData() throws -> [UserEntity]
+    func syncronizeRemoteData() async throws
     func save(_ entity: UserEntity) -> Bool
     func delete(_ entity: UserEntity) -> Bool
 }

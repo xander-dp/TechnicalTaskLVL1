@@ -18,7 +18,7 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var addressMainLabel: UILabel!
     @IBOutlet weak var addressSecondaryLabel: UILabel!
     
-    private var model: UserPresntationModel! {
+    private var model: UserEntity! {
         didSet {
             usernameLabel?.text = model.name
             emailLabel?.text = model.email
@@ -37,9 +37,7 @@ class UserCell: UITableViewCell {
         self.wrapperView.layer.cornerRadius = 20
     }
     
-    var cancellable: AnyCancellable? // 1
-    
-    func configureCell(with model: UserPresntationModel) {
+    func configureCell(with model: UserEntity) {
         self.model = model
     }
 

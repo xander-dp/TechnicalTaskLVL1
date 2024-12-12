@@ -5,21 +5,53 @@ import Combine
 import CoreData
 
 class UserViewController: UITableViewController {
-    var cancellabels = Set<AnyCancellable>()
-
+    var cancellables = Set<AnyCancellable>()
+    
+    private let usersViewModel: UsersViewModel
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    init(usersViewModel: UsersViewModel) {
+        self.usersViewModel = usersViewModel
+        super.init(style: .grouped)
+    }
+    
     override func viewDidLoad() {
-        let vm = UsersViewModel(dataService: UsersDataServiceImplementation(
-            requester: UsersRequester("https://jsonplaceholder.typicode.com/users")),
-                                connectivityStatePublisher: Just(true).eraseToAnyPublisher())
-        
-        vm.fetchUsersList()
-        
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = .white
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 100
         self.tableView.register(UINib(nibName: UserCell.xibName, bundle: nil),
                                 forCellReuseIdentifier: UserCell.reuseIdentifier)
+
+        self.bindViewModel()
+        usersViewModel.syncronizeRemoteData()
+    }
+    
+    private func bindViewModel() {
+        self.usersViewModel.$usersList
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        self.usersViewModel.$errorMessage
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] message in
+                if let message = message {
+                    self?.showError(message)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func showError(_ message: String) {
+        let alert = UIAlertController(title: "ERROR", message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
 }
 
@@ -30,7 +62,8 @@ extension UserViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let rowsCount = 0
+        let rowsCount = self.usersViewModel.usersList.count
+        
         if rowsCount == 0 {
             let view = UIView()
             view.backgroundColor = .red
@@ -64,12 +97,10 @@ extension UserViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.reuseIdentifier, for: indexPath) as? UserCell
-//        guard let fetchResult = self.fetchedResultsController?.object(at: indexPath),
-//        let moUserEntity = (fetchResult as? UserEntityManagedObj)
-//        else {
-//            fatalError("Attempt to configure cell without a managed obj")
-//        }
-//        cell?.configureCell(with: UserPresntationModel(managedEntity: moUserEntity))
+        let userData = self.usersViewModel.usersList[indexPath.row]
+        
+        cell?.configureCell(with: userData)
+        
         return cell ?? UITableViewCell()
     }
 }

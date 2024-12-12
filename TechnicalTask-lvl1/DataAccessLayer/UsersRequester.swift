@@ -12,8 +12,7 @@ enum RequestFailed: Error {
     case withError(String)
 }
 
-class UsersRequester {
-    //private let url = URL(string: "https://jsonplaceholder.typicode.com/users")!
+final class UsersRequester {
     private let urlStringRepresentation: String
     private let decoder = JSONDecoder()
     

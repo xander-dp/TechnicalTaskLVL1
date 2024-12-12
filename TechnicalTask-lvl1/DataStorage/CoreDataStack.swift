@@ -15,8 +15,6 @@ enum DataStorageError: Error {
 }
 
 final class CoreDataStack: DataStorageFacade {
-    static let modelName = "UserDataModel" //move to constants
-    
     private let container: NSPersistentContainer
     
     var managedContext: NSManagedObjectContext {
@@ -43,8 +41,6 @@ final class CoreDataStack: DataStorageFacade {
                 print("Error during Data creation: \(error)")
                 throw DataStorageError.unableToChangeData(error.localizedDescription)
             }
-        } else {
-            throw DataStorageError.recordAlreadyExist(entity.email)
         }
     }
     

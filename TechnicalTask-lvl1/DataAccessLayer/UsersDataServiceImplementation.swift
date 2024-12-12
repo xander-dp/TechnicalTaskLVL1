@@ -5,35 +5,56 @@
 //  Created by Oleksandr Savchenko on 11.12.24.
 //
 
+import Foundation
+
 final class UsersDataServiceImplementation: UsersDataService {
-    let requester: UsersRequester
+    private let requester: UsersRequester
+    private let dataStorage: DataStorageFacade
     
-    init(requester: UsersRequester) {
+    init(requester: UsersRequester, dataStorage: DataStorageFacade) {
         self.requester = requester
+        self.dataStorage = dataStorage
     }
     
-    func fetchDataList() async throws -> [UserEntity] {
-        //stub
-        print("\(#function) called")
-        
+    func fetchLocalData() throws -> [UserEntity] {
         do {
-            try await requester.executeGetRequest()
+            let data = try self.dataStorage.read()
+            return data
+        } catch {
+            print(error)
+            return [UserEntity]()
+        }
+    }
+    
+    func syncronizeRemoteData() async throws {
+        do {
+            let remoteList = try await requester.executeGetRequest()
+            
+            for user in remoteList {
+                try? self.dataStorage.create(entity: user)
+            }
         } catch {
             print(error)
         }
-        
-        return [UserEntity]()
     }
     
     func save(_ entity: UserEntity) -> Bool {
-        //stub
-        print("\(#function) called, with entity: \(entity)")
-        return true
+        do {
+            try self.dataStorage.create(entity: entity)
+            return true
+        } catch {
+            print(error)
+            return false
+        }
     }
     
     func delete(_ entity: UserEntity) -> Bool {
-        //stub
-        print("\(#function) called, with entity: \(entity)")
-        return true
+        do {
+            try self.dataStorage.delete(entity: entity)
+            return true
+        } catch {
+            print(error)
+            return false
+        }
     }
 }

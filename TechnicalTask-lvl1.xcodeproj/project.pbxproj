@@ -147,8 +147,8 @@
 		FA4800782CF4E979003432E8 /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				FAADE2AD2D0B3E2000DB634D /* ManagedObjs */,
 				FAEA22322D09FC8D0083F4CA /* DataStorageFacade.swift */,
-				FAEA22302D09F9410083F4CA /* UserEntityMO.swift */,
 				FA48008D2CF707B8003432E8 /* CoreDataStack.swift */,
 				FAEA222D2D09F68C0083F4CA /* UserDataModel.xcdatamodeld */,
 			);
@@ -158,13 +158,37 @@
 		FA4800862CF5423C003432E8 /* DataAccessLayer */ = {
 			isa = PBXGroup;
 			children = (
-				FA4800732CF4A725003432E8 /* DALUser.swift */,
-				FAEA22242D0997B50083F4CA /* UsersDataService.swift */,
+				FAADE2AB2D0B3DD800DB634D /* Protocols */,
+				FAADE2AC2D0B3DFB00DB634D /* DALDataModel */,
 				FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */,
-				FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */,
 				FA4800872CF54247003432E8 /* UsersRequester.swift */,
 			);
 			path = DataAccessLayer;
+			sourceTree = "<group>";
+		};
+		FAADE2AB2D0B3DD800DB634D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FAEA22242D0997B50083F4CA /* UsersDataService.swift */,
+				FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FAADE2AC2D0B3DFB00DB634D /* DALDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				FA4800732CF4A725003432E8 /* DALUser.swift */,
+			);
+			path = DALDataModel;
+			sourceTree = "<group>";
+		};
+		FAADE2AD2D0B3E2000DB634D /* ManagedObjs */ = {
+			isa = PBXGroup;
+			children = (
+				FAEA22302D09F9410083F4CA /* UserEntityMO.swift */,
+			);
+			path = ManagedObjs;
 			sourceTree = "<group>";
 		};
 		FAEA222A2D09F1D40083F4CA /* Utils */ = {

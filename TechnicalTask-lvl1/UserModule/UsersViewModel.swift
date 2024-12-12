@@ -16,18 +16,30 @@ final class UsersViewModel: ObservableObject {
     private let dataService: any UsersDataService
     private var cancellables = Set<AnyCancellable>()
     
-    init(dataService: any UsersDataService, connectivityStatePublisher: AnyPublisher<Bool, Never>) {
+    init(dataService: any UsersDataService, connectivityStatePublisher: AnyPublisher<Bool, Never>? = nil) {
         self.dataService = dataService
         
-        connectivityStatePublisher
+        connectivityStatePublisher?
             .map { $0 }
             .assign(to: &$connectionEstablished)
+        
+        self.fetchLocalData()
     }
     
-    func fetchUsersList() {
+    func fetchLocalData() {
+        do {
+            self.usersList = try self.dataService.fetchLocalData()
+            print(self.usersList)
+        } catch {
+            self.errorMessage = error.localizedDescription
+        }
+    }
+    
+    func syncronizeRemoteData() {
         Task {
             do {
-                self.usersList = try await self.dataService.fetchDataList()
+                try await self.dataService.syncronizeRemoteData()
+                self.fetchLocalData()
             } catch {
                 self.errorMessage = error.localizedDescription
             }
