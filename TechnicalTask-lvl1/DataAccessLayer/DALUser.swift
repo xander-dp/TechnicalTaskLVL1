@@ -16,22 +16,11 @@ public struct DALUser: Codable {
     let address: Address
     let company: Company?
     
-    init(from managedEntity: UserEntityManagedObj) {
-        self.id = Int(managedEntity.id)
-        self.name = managedEntity.name
-        self.username = managedEntity.userName ?? ""
-        self.email = managedEntity.email
-        self.phone = managedEntity.phone
-        self.website = managedEntity.website
-        self.address = Address(street: managedEntity.address.street,
-                               city: managedEntity.address.city,
-                               suite: managedEntity.address.suite,
-                               zipcode: managedEntity.address.zipcode,
-                               geo: Geo(lat: managedEntity.address.geo?.lat,
-                                        lng: managedEntity.address.geo?.lng))
-        self.company = Company(name: managedEntity.company?.name,
-                               catchPhrase: managedEntity.company?.catchPhrase,
-                               bs: managedEntity.company?.bs)
+    func toUserEntity() -> UserEntity {
+        UserEntity(email: self.email,
+                   name: self.name,
+                   city: self.address.city,
+                   street: self.address.street)
     }
 }
 

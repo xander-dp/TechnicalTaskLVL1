@@ -50,18 +50,12 @@ class UsersRequester {
             throw RequestFailed.withCode(httpResponse.statusCode)
         }
         
-        var usersList: [UserEntity]
         do {
             let dalUsersList = try self.decoder.decode([DALUser].self, from: requestResult.data)
-            usersList = dalUsersList.map { UserEntity(name: $0.name,
-                                                      email: $0.email,
-                                                      street: $0.address.street,
-                                                      city: $0.address.city)}
+            return dalUsersList.map { $0.toUserEntity() }
         } catch {
             print("\(#function) error during data parsing: \(error)")
             throw RequestFailed.withError(error.localizedDescription)
         }
-            
-        return usersList
     }
 }

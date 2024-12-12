@@ -16,11 +16,6 @@ final class UsersViewModel: ObservableObject {
     private let dataService: any UsersDataService
     private var cancellables = Set<AnyCancellable>()
     
-    enum OperationResult {
-        case success
-        case failure
-    }
-    
     init(dataService: any UsersDataService, connectivityStatePublisher: AnyPublisher<Bool, Never>) {
         self.dataService = dataService
         
@@ -46,7 +41,7 @@ final class UsersViewModel: ObservableObject {
         if self.dataService.delete(entity) {
             return .success
         } else {
-            return .failure
+            return .failure("")
         }
     }
     

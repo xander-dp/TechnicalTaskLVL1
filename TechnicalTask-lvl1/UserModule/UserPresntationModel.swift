@@ -19,11 +19,4 @@ extension UserPresntationModel {
         self.city = entity.address.city
         self.street = entity.address.street
     }
-    
-    init(managedEntity: UserEntityManagedObj) {
-        self.name = managedEntity.name
-        self.email = managedEntity.email
-        self.city = managedEntity.address.city
-        self.street = managedEntity.address.street
-    }
 }
