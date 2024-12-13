@@ -11,15 +11,16 @@ import Combine
 final class UsersViewModel: ObservableObject {
     @Published var usersList = [UserEntity]()
     @Published var connectionEstablished = false
+    @Published var synchronizationInProgres = false
     @Published var errorMessage: String?
     
     private let dataService: any UsersDataService
     private var cancellables = Set<AnyCancellable>()
     
-    init(dataService: any UsersDataService, connectivityStatePublisher: AnyPublisher<Bool, Never>? = nil) {
+    init(dataService: any UsersDataService, connectivityStatePublisher: AnyPublisher<Bool, Never>) {
         self.dataService = dataService
         
-        connectivityStatePublisher?
+        connectivityStatePublisher
             .map { $0 }
             .assign(to: &$connectionEstablished)
         
@@ -29,31 +30,31 @@ final class UsersViewModel: ObservableObject {
     func fetchLocalData() {
         do {
             self.usersList = try self.dataService.fetchLocalData()
-            print(self.usersList)
         } catch {
             self.errorMessage = error.localizedDescription
         }
     }
     
-    func syncronizeRemoteData() {
+    func synchronizeRemoteData() {
         Task {
+            self.synchronizationInProgres = true
             do {
                 try await self.dataService.syncronizeRemoteData()
                 self.fetchLocalData()
             } catch {
                 self.errorMessage = error.localizedDescription
             }
+            self.synchronizationInProgres = false
         }
         .store(in: &cancellables)
     }
     
-    func deleteUser(at index: Int) -> OperationResult {
-        let entity = self.usersList.remove(at: index)
-        
-        if self.dataService.delete(entity) {
-            return .success
+    func deleteUser(at index: Int) {
+        if self.usersList.indices.contains(index) {
+            let entity = self.usersList.remove(at: index)
+            self.dataService.delete(entity)
         } else {
-            return .failure("")
+            self.errorMessage = "No such index"
         }
     }
     

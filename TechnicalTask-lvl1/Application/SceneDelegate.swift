@@ -16,18 +16,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let dataStorage = CoreDataStack(name: dataModelName)
         
         let dataService = UsersDataServiceImplementation(requester: requester, dataStorage: dataStorage)
-        let usersViewModel = UsersViewModel(dataService: dataService)
+        let networkMonitor = NetworkStatusMonitor()
+        let usersViewModel = UsersViewModel(dataService: dataService, connectivityStatePublisher: networkMonitor.statePublisher)
         
         window?.rootViewController = UserViewController(usersViewModel: usersViewModel)
         window?.makeKeyAndVisible()
-    }
-    
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        
-    }
-    
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        
     }
 }
 

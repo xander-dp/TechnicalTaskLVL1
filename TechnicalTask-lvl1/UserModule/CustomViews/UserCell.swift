@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class UserCell: UITableViewCell {
+final class UserCell: UITableViewCell {
     static let reuseIdentifier = "UserContactCellIdentifier"
     static let xibName = "UserCell"
 

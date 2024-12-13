@@ -7,5 +7,5 @@
 import Combine
 
 protocol ConnectivityManager {
-    var currenttlyConnected: AnyPublisher<Bool, Never> { get }
+    var statePublisher: AnyPublisher<Bool, Never> { get }
 }
