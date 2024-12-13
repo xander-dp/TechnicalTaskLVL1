@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class UsersViewModel: ObservableObject {
+final class UsersListViewModel: ObservableObject {
     @Published var usersList = [UserEntity]()
     @Published var connectionEstablished = false
     @Published var synchronizationInProgres = false

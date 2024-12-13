@@ -4,16 +4,33 @@ import UIKit
 import Combine
 import CoreData
 
-final class UserViewController: UITableViewController {
-    var cancellables = Set<AnyCancellable>()
+protocol UsersListViewControllerDelegate: AnyObject {
+    func usersListViewControllerIsDeiniting(_ sender: UsersListViewController)
+}
+
+final class UsersListViewController: UITableViewController {
+    weak var delegate: UsersListViewControllerDelegate?
     
-    private let usersViewModel: UsersViewModel
+    private var cancellables = Set<AnyCancellable>()
+    private let usersViewModel: UsersListViewModel
     
+    //MARK: Lazy Subviews
+    private lazy var refreshCtrl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        return refreshControl
+    }()
+    private lazy var activityIndicator = ActivityIndicator()
+    private lazy var noDataView = NoDataView()
+    private lazy var noConnectionView = NoConnectionView()
+    
+    
+    //MARK: Lifecycle
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(usersViewModel: UsersViewModel) {
+    init(usersViewModel: UsersListViewModel) {
         self.usersViewModel = usersViewModel
         super.init(style: .grouped)
     }
@@ -70,39 +87,28 @@ final class UserViewController: UITableViewController {
             .store(in: &cancellables)
     }
     
-    private func showError(_ message: String) {
-        let alert = UIAlertController(title: "ERROR", message: message, preferredStyle: .alert)
-        self.present(alert, animated: true, completion: nil)
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+    deinit {
+        delegate?.usersListViewControllerIsDeiniting(self)
     }
-    
+}
+
+//MARK: Private functions
+private extension UsersListViewController {
     @objc private func refresh() {
         self.refreshCtrl.endRefreshing()
         self.activityIndicator.isHidden.toggle()
         self.usersViewModel.synchronizeRemoteData()
     }
     
-    private lazy var refreshCtrl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
-        return refreshControl
-    }()
-    
-    private lazy var activityIndicator: ActivityIndicator = {
-        ActivityIndicator()
-    }()
-    
-    private lazy var noDataView: UIView = {
-        NoDataView()
-    }()
-    
-    private lazy var noConnectionView: NoConnectionView = {
-        NoConnectionView()
-    }()
+    func showError(_ message: String) {
+        let alert = UIAlertController(title: "ERROR", message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+    }
 }
 
 //MARK: UITableViewDataSource
-extension UserViewController {
+extension UsersListViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -152,7 +158,7 @@ extension UserViewController {
 }
 
 //MARK: UITableViewDelegate
-extension UserViewController {
+extension UsersListViewController {
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }

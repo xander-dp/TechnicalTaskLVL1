@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE9F09152CEF646D00CFA6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F09142CEF646D00CFA6B5 /* AppDelegate.swift */; };
 		CE9F09172CEF646D00CFA6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F09162CEF646D00CFA6B5 /* SceneDelegate.swift */; };
-		CE9F09192CEF646D00CFA6B5 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F09182CEF646D00CFA6B5 /* UserViewController.swift */; };
+		CE9F09192CEF646D00CFA6B5 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F09182CEF646D00CFA6B5 /* UsersListViewController.swift */; };
 		CE9F091E2CEF647100CFA6B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9F091D2CEF647100CFA6B5 /* Assets.xcassets */; };
 		CE9F09212CEF647100CFA6B5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE9F09202CEF647100CFA6B5 /* Base */; };
 		FA4800702CF498C1003432E8 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA48006F2CF498C1003432E8 /* UserCell.xib */; };
@@ -21,7 +21,9 @@
 		FAADE2E82D0BA6C200DB634D /* NetworkStatusMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2E72D0BA6BA00DB634D /* NetworkStatusMonitor.swift */; };
 		FAADE2EA2D0BAA8600DB634D /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2E92D0BAA4900DB634D /* NoConnectionView.swift */; };
 		FAADE2EC2D0BB1D100DB634D /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2EB2D0BB1C500DB634D /* NoDataView.swift */; };
-		FAEA221F2D0896F30083F4CA /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA221E2D0896ED0083F4CA /* UsersViewModel.swift */; };
+		FAADE2EF2D0C461D00DB634D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2EE2D0C461800DB634D /* AppCoordinator.swift */; };
+		FAADE2F12D0C4E8F00DB634D /* UsersListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2F02D0C4E8C00DB634D /* UsersListCoordinator.swift */; };
+		FAEA221F2D0896F30083F4CA /* UsersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */; };
 		FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */; };
 		FAEA22252D0997EF0083F4CA /* UsersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22242D0997B50083F4CA /* UsersDataService.swift */; };
 		FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */; };
@@ -36,7 +38,7 @@
 		CE9F09112CEF646D00CFA6B5 /* TechnicalTask-lvl1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TechnicalTask-lvl1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9F09142CEF646D00CFA6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE9F09162CEF646D00CFA6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE9F09182CEF646D00CFA6B5 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		CE9F09182CEF646D00CFA6B5 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
 		CE9F091D2CEF647100CFA6B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE9F09202CEF647100CFA6B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE9F09222CEF647100CFA6B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,7 +51,9 @@
 		FAADE2E72D0BA6BA00DB634D /* NetworkStatusMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusMonitor.swift; sourceTree = "<group>"; };
 		FAADE2E92D0BAA4900DB634D /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
 		FAADE2EB2D0BB1C500DB634D /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
-		FAEA221E2D0896ED0083F4CA /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		FAADE2EE2D0C461800DB634D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FAADE2F02D0C4E8C00DB634D /* UsersListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListCoordinator.swift; sourceTree = "<group>"; };
+		FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModel.swift; sourceTree = "<group>"; };
 		FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		FAEA22242D0997B50083F4CA /* UsersDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataService.swift; sourceTree = "<group>"; };
 		FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataServiceImplementation.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 		CE9F09292CEF659F00CFA6B5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				FAADE2ED2D0C461000DB634D /* Coordinators */,
 				CE9F09142CEF646D00CFA6B5 /* AppDelegate.swift */,
 				CE9F09162CEF646D00CFA6B5 /* SceneDelegate.swift */,
 			);
@@ -123,9 +128,9 @@
 		CE9F092A2CEF65CA00CFA6B5 /* UserModule */ = {
 			isa = PBXGroup;
 			children = (
-				FAEA221E2D0896ED0083F4CA /* UsersViewModel.swift */,
+				FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */,
 				FA4800752CF4D845003432E8 /* CustomViews */,
-				CE9F09182CEF646D00CFA6B5 /* UserViewController.swift */,
+				CE9F09182CEF646D00CFA6B5 /* UsersListViewController.swift */,
 			);
 			path = UserModule;
 			sourceTree = "<group>";
@@ -196,6 +201,15 @@
 				FAEA22302D09F9410083F4CA /* UserEntityMO.swift */,
 			);
 			path = ManagedObjs;
+			sourceTree = "<group>";
+		};
+		FAADE2ED2D0C461000DB634D /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				FAADE2EE2D0C461800DB634D /* AppCoordinator.swift */,
+				FAADE2F02D0C4E8C00DB634D /* UsersListCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		FAEA222A2D09F1D40083F4CA /* Utils */ = {
@@ -280,16 +294,18 @@
 				FAEA22252D0997EF0083F4CA /* UsersDataService.swift in Sources */,
 				FA4800712CF498C1003432E8 /* UserCell.swift in Sources */,
 				FAADE2EA2D0BAA8600DB634D /* NoConnectionView.swift in Sources */,
-				CE9F09192CEF646D00CFA6B5 /* UserViewController.swift in Sources */,
+				CE9F09192CEF646D00CFA6B5 /* UsersListViewController.swift in Sources */,
 				CE9F09152CEF646D00CFA6B5 /* AppDelegate.swift in Sources */,
 				FAADE2EC2D0BB1D100DB634D /* NoDataView.swift in Sources */,
+				FAADE2EF2D0C461D00DB634D /* AppCoordinator.swift in Sources */,
 				FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */,
 				FAADE2E62D0B813C00DB634D /* ActivityIndicator.swift in Sources */,
 				FAEA222C2D09F1EB0083F4CA /* Task+store.swift in Sources */,
 				FA4800742CF4A72A003432E8 /* DALUser.swift in Sources */,
 				FAEA22292D09E9D80083F4CA /* UserEntity.swift in Sources */,
 				FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */,
-				FAEA221F2D0896F30083F4CA /* UsersViewModel.swift in Sources */,
+				FAADE2F12D0C4E8F00DB634D /* UsersListCoordinator.swift in Sources */,
+				FAEA221F2D0896F30083F4CA /* UsersListViewModel.swift in Sources */,
 				FAEA22312D09F94B0083F4CA /* UserEntityMO.swift in Sources */,
 				FA48008E2CF707C1003432E8 /* CoreDataStack.swift in Sources */,
 				FA4800882CF54250003432E8 /* UsersRequester.swift in Sources */,
