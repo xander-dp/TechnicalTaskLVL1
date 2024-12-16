@@ -6,6 +6,8 @@
 //
 import Combine
 
-protocol ConnectivityManager {
+protocol ConnectivityObserver {
     var statePublisher: AnyPublisher<Bool, Never> { get }
+    func startObserving()
+    func stopObserving()
 }

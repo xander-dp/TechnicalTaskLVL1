@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 // MARK: - UserEntity
-public struct DALUser: Codable {
+struct DALUser: Codable {
     let name: String
     let email: String
     let address: Address

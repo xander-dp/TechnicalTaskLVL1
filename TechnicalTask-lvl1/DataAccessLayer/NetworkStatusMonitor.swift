@@ -8,22 +8,30 @@ import Foundation
 import Combine
 import Network
 
-final class NetworkStatusMonitor: ConnectivityManager {
+final class NetworkStatusMonitor: ConnectivityObserver {
+    
     var statePublisher: AnyPublisher<Bool, Never> {
         connectionStateSubject.eraseToAnyPublisher()
     }
     
     private var connectionStateSubject = CurrentValueSubject<Bool, Never>(false)
+    private let networkMonitor: NWPathMonitor
 
     init() {
-        let monitor = NWPathMonitor()
-        monitor.start(queue: DispatchQueue.global(qos: .background))
-        
-        monitor.pathUpdateHandler = { [weak self] path in
-            guard let self else { return }
+        self.networkMonitor = NWPathMonitor()
+    }
+    
+    func startObserving() {
+        self.networkMonitor.start(queue: DispatchQueue.global(qos: .utility))
+        self.networkMonitor.pathUpdateHandler = { [weak connectionStateSubject] path in
             
-            self.connectionStateSubject.send(path.status == .satisfied)
+            connectionStateSubject?.send(path.status == .satisfied)
             print("Current Network status: \(path.status)")
         }
+    }
+    
+    func stopObserving() {
+        self.networkMonitor.cancel()
+        self.networkMonitor.pathUpdateHandler = nil
     }
 }

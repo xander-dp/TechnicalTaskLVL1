@@ -20,16 +20,16 @@ final class AppCoordinator {
     private let fieldValidator: UserFieldsValidator
     private let dataStorage: DataStorageFacade
     private let dataService: UsersDataService
-    private let connectivityManager: ConnectivityManager
+    private let connectivityObserver: ConnectivityObserver
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, connectivityObserver: ConnectivityObserver) {
         self.navigationController = navigationController
+        self.connectivityObserver = connectivityObserver
         
         self.dataRequester = UsersRequester(apiURL)
         self.fieldValidator = UserFieldsValidatorImplementation()
         self.dataStorage = CoreDataStack(name: dataModelName)
         self.dataService = UsersDataServiceImplementation(requester: dataRequester, dataStorage: dataStorage)
-        self.connectivityManager = NetworkStatusMonitor()
     }
     
     func start() {
@@ -39,7 +39,8 @@ final class AppCoordinator {
     private func startUsersListCoordinator() {
         self.usersListCoordinator = UsersListCoordinator(
             dataService: self.dataService,
-            connectivityManager: self.connectivityManager) { [weak self] in
+            connectivityObserver: self.connectivityObserver
+        ) { [weak self] in
             self?.usersListCoordinator = nil
         }
         
@@ -52,8 +53,10 @@ final class AppCoordinator {
     }
     
     private func beginAddUserCoordinator() {
-        self.addUserCoordinator = AddUserCoordinator(dataService: self.dataService,
-                                                     fieldValidator: self.fieldValidator) { [weak self] in
+        self.addUserCoordinator = AddUserCoordinator(
+            dataService: self.dataService,
+            fieldValidator: self.fieldValidator
+        ) { [weak self] in
             self?.addUserCoordinator = nil
         }
         

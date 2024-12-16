@@ -29,7 +29,7 @@
 		FAADE2FF2D0F881F00DB634D /* AddUserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2FE2D0F880A00DB634D /* AddUserCoordinator.swift */; };
 		FAADE3012D0FAC5E00DB634D /* UserFieldsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE3002D0FAC5A00DB634D /* UserFieldsValidator.swift */; };
 		FAEA221F2D0896F30083F4CA /* UsersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */; };
-		FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */; };
+		FAEA22232D08A39C0083F4CA /* ConnectivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22222D08A3910083F4CA /* ConnectivityObserver.swift */; };
 		FAEA22252D0997EF0083F4CA /* UsersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22242D0997B50083F4CA /* UsersDataService.swift */; };
 		FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */; };
 		FAEA22292D09E9D80083F4CA /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22282D09E9D60083F4CA /* UserEntity.swift */; };
@@ -64,7 +64,7 @@
 		FAADE2FE2D0F880A00DB634D /* AddUserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserCoordinator.swift; sourceTree = "<group>"; };
 		FAADE3002D0FAC5A00DB634D /* UserFieldsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFieldsValidator.swift; sourceTree = "<group>"; };
 		FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModel.swift; sourceTree = "<group>"; };
-		FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
+		FAEA22222D08A3910083F4CA /* ConnectivityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityObserver.swift; sourceTree = "<group>"; };
 		FAEA22242D0997B50083F4CA /* UsersDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataService.swift; sourceTree = "<group>"; };
 		FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataServiceImplementation.swift; sourceTree = "<group>"; };
 		FAEA22282D09E9D60083F4CA /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				FAEA22242D0997B50083F4CA /* UsersDataService.swift */,
-				FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */,
+				FAEA22222D08A3910083F4CA /* ConnectivityObserver.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 				FAADE2F52D0C662D00DB634D /* AddUserViewModel.swift in Sources */,
 				FAADE2EC2D0BB1D100DB634D /* NoDataView.swift in Sources */,
 				FAADE2EF2D0C461D00DB634D /* AppCoordinator.swift in Sources */,
-				FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */,
+				FAEA22232D08A39C0083F4CA /* ConnectivityObserver.swift in Sources */,
 				FAADE2E62D0B813C00DB634D /* ActivityIndicator.swift in Sources */,
 				FAEA222C2D09F1EB0083F4CA /* Task+store.swift in Sources */,
 				FA4800742CF4A72A003432E8 /* DALUser.swift in Sources */,

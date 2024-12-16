@@ -20,26 +20,30 @@ final class UsersListCoordinator {
 
     private var usersListViewController: UsersListViewController?
     private let dataService: UsersDataService
-    private let connectivityManager: ConnectivityManager
+    private let connectivityObserver: ConnectivityObserver
     
-    init(dataService: UsersDataService, connectivityManager: ConnectivityManager, finishAction: @escaping () -> Void) {
+    init(dataService: UsersDataService, connectivityObserver: ConnectivityObserver, finishAction: @escaping () -> Void) {
         self.dataService = dataService
-        self.connectivityManager = connectivityManager
+        self.connectivityObserver = connectivityObserver
         self.finishAction = finishAction
     }
     
     func start() {
-        let viewModel = UsersListViewModel(dataService: self.dataService,
-                                           connectivityObserver: self.connectivityManager)
+        let viewModel = UsersListViewModel(
+            dataService: self.dataService,
+            connectivityObserver: self.connectivityObserver
+        )
         self.usersListViewController = UsersListViewController.instantiate(viewModel: viewModel)
         
         self.usersListViewController?.title = "Users"
         self.usersListViewController?.delegate = self
         
-        let addUserButton = UIBarButtonItem(title: "New User",
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(addUserButtonTapped))
+        let addUserButton = UIBarButtonItem(
+            title: "New User",
+            style: .plain,
+            target: self,
+            action: #selector(addUserButtonTapped)
+        )
         usersListViewController?.navigationItem.rightBarButtonItem = addUserButton
     }
 }

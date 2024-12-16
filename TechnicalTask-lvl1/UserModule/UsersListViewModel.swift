@@ -17,7 +17,7 @@ final class UsersListViewModel: ObservableObject {
     private let dataService: any UsersDataService
     private var cancellables = Set<AnyCancellable>()
     
-    init(dataService: any UsersDataService, connectivityObserver: ConnectivityManager) {
+    init(dataService: any UsersDataService, connectivityObserver: ConnectivityObserver) {
         self.dataService = dataService
         
         connectivityObserver.statePublisher
