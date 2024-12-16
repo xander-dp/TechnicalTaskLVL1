@@ -8,10 +8,10 @@
 import Foundation
 
 final class UsersDataServiceImplementation: UsersDataService {
-    private let requester: UsersRequester
+    private let requester: UsersDataRequester
     private let dataStorage: DataStorageFacade
     
-    init(requester: UsersRequester, dataStorage: DataStorageFacade) {
+    init(requester: UsersDataRequester, dataStorage: DataStorageFacade) {
         self.requester = requester
         self.dataStorage = dataStorage
     }
@@ -28,7 +28,7 @@ final class UsersDataServiceImplementation: UsersDataService {
     
     func syncronizeRemoteData() async throws {
         do {
-            let remoteList = try await requester.executeGetRequest()
+            let remoteList = try await requester.getUsersData()
             
             for user in remoteList {
                 try? self.dataStorage.create(entity: user)

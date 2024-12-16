@@ -12,21 +12,20 @@ fileprivate let dataModelName = "UserDataModel"
 
 final class AppCoordinator {
     private let navigationController: UINavigationController
+    private let connectivityObserver: ConnectivityObserver
     
     private var usersListCoordinator: UsersListCoordinator?
     private var addUserCoordinator: AddUserCoordinator?
     
-    private let dataRequester: UsersRequester
+    private let dataRequester: UsersDataRequester
     private let fieldValidator: UserFieldsValidator
     private let dataStorage: DataStorageFacade
     private let dataService: UsersDataService
-    private let connectivityObserver: ConnectivityObserver
     
     init(navigationController: UINavigationController, connectivityObserver: ConnectivityObserver) {
         self.navigationController = navigationController
         self.connectivityObserver = connectivityObserver
-        
-        self.dataRequester = UsersRequester(apiURL)
+        self.dataRequester = UsersDataHTTPRequester(apiURL)
         self.fieldValidator = UserFieldsValidatorImplementation()
         self.dataStorage = CoreDataStack(name: dataModelName)
         self.dataService = UsersDataServiceImplementation(requester: dataRequester, dataStorage: dataStorage)

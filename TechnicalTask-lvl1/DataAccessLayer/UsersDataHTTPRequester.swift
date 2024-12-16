@@ -5,32 +5,29 @@
 //  Created by Oleksandr Savchenko on 26.11.24.
 //
 import Foundation
-import Combine
 
 enum RequestFailed: Error {
     case withCode(Int)
     case withError(String)
 }
 
-final class UsersRequester {
-    private let urlStringRepresentation: String
-    private let decoder = JSONDecoder()
+final class UsersDataHTTPRequester: UsersDataRequester {
+    var apiLink: String
+    var decoder = JSONDecoder()
     
-    init(_ urlStringRepresentation: String) {
-        self.urlStringRepresentation = urlStringRepresentation
+    init(_ apiLink: String) {
+        self.apiLink = apiLink
     }
     
-    func executeGetRequest() async throws -> [UserEntity] {
-        guard let url = URL(string: urlStringRepresentation)
-        else {
-            print("\(#function) called with invalid URL: \(urlStringRepresentation)")
-            throw RequestFailed.withError("Invalid URL: \(urlStringRepresentation)")
+    func getUsersData() async throws -> [UserEntity] {
+        guard let url = URL(string: self.apiLink) else {
+            throw RequestFailed.withError("Ivalid URL: \(self.apiLink)")
         }
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         
-        var requestResult: (data: Data, response: URLResponse)
+        let requestResult: (data: Data, response: URLResponse)
         do {
             requestResult = try await URLSession.shared.data(for: urlRequest)
         } catch {
@@ -44,7 +41,7 @@ final class UsersRequester {
             throw RequestFailed.withError("Unable to read response")
         }
         
-        if httpResponse.statusCode != 200 {
+        if !(200...299).contains(httpResponse.statusCode) {
             print("\(#function) request finished with status code: \(httpResponse.statusCode)")
             throw RequestFailed.withCode(httpResponse.statusCode)
         }

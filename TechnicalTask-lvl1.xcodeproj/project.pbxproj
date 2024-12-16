@@ -15,7 +15,7 @@
 		FA4800702CF498C1003432E8 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA48006F2CF498C1003432E8 /* UserCell.xib */; };
 		FA4800712CF498C1003432E8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48006E2CF498C1003432E8 /* UserCell.swift */; };
 		FA4800742CF4A72A003432E8 /* DALUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800732CF4A725003432E8 /* DALUser.swift */; };
-		FA4800882CF54250003432E8 /* UsersRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800872CF54247003432E8 /* UsersRequester.swift */; };
+		FA4800882CF54250003432E8 /* UsersDataHTTPRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4800872CF54247003432E8 /* UsersDataHTTPRequester.swift */; };
 		FA48008E2CF707C1003432E8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA48008D2CF707B8003432E8 /* CoreDataStack.swift */; };
 		FAADE2E62D0B813C00DB634D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2E52D0B813600DB634D /* ActivityIndicator.swift */; };
 		FAADE2E82D0BA6C200DB634D /* NetworkStatusMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2E72D0BA6BA00DB634D /* NetworkStatusMonitor.swift */; };
@@ -28,6 +28,7 @@
 		FAADE2FD2D0EF50700DB634D /* AddUserFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2FC2D0EF4FD00DB634D /* AddUserFormView.swift */; };
 		FAADE2FF2D0F881F00DB634D /* AddUserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2FE2D0F880A00DB634D /* AddUserCoordinator.swift */; };
 		FAADE3012D0FAC5E00DB634D /* UserFieldsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE3002D0FAC5A00DB634D /* UserFieldsValidator.swift */; };
+		FAE9787C2D1040C7009C9F21 /* UsersDataRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9787B2D1040AD009C9F21 /* UsersDataRequester.swift */; };
 		FAEA221F2D0896F30083F4CA /* UsersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */; };
 		FAEA22232D08A39C0083F4CA /* ConnectivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22222D08A3910083F4CA /* ConnectivityObserver.swift */; };
 		FAEA22252D0997EF0083F4CA /* UsersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22242D0997B50083F4CA /* UsersDataService.swift */; };
@@ -50,7 +51,7 @@
 		FA48006E2CF498C1003432E8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		FA48006F2CF498C1003432E8 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		FA4800732CF4A725003432E8 /* DALUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DALUser.swift; sourceTree = "<group>"; };
-		FA4800872CF54247003432E8 /* UsersRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRequester.swift; sourceTree = "<group>"; };
+		FA4800872CF54247003432E8 /* UsersDataHTTPRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataHTTPRequester.swift; sourceTree = "<group>"; };
 		FA48008D2CF707B8003432E8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FAADE2E52D0B813600DB634D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		FAADE2E72D0BA6BA00DB634D /* NetworkStatusMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusMonitor.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		FAADE2FC2D0EF4FD00DB634D /* AddUserFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserFormView.swift; sourceTree = "<group>"; };
 		FAADE2FE2D0F880A00DB634D /* AddUserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserCoordinator.swift; sourceTree = "<group>"; };
 		FAADE3002D0FAC5A00DB634D /* UserFieldsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFieldsValidator.swift; sourceTree = "<group>"; };
+		FAE9787B2D1040AD009C9F21 /* UsersDataRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataRequester.swift; sourceTree = "<group>"; };
 		FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModel.swift; sourceTree = "<group>"; };
 		FAEA22222D08A3910083F4CA /* ConnectivityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityObserver.swift; sourceTree = "<group>"; };
 		FAEA22242D0997B50083F4CA /* UsersDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataService.swift; sourceTree = "<group>"; };
@@ -185,7 +187,7 @@
 				FAADE2AC2D0B3DFB00DB634D /* DALDataModel */,
 				FAADE2E72D0BA6BA00DB634D /* NetworkStatusMonitor.swift */,
 				FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */,
-				FA4800872CF54247003432E8 /* UsersRequester.swift */,
+				FA4800872CF54247003432E8 /* UsersDataHTTPRequester.swift */,
 			);
 			path = DataAccessLayer;
 			sourceTree = "<group>";
@@ -193,6 +195,7 @@
 		FAADE2AB2D0B3DD800DB634D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				FAE9787B2D1040AD009C9F21 /* UsersDataRequester.swift */,
 				FAEA22242D0997B50083F4CA /* UsersDataService.swift */,
 				FAEA22222D08A3910083F4CA /* ConnectivityObserver.swift */,
 			);
@@ -322,6 +325,7 @@
 				CE9F09192CEF646D00CFA6B5 /* UsersListViewController.swift in Sources */,
 				CE9F09152CEF646D00CFA6B5 /* AppDelegate.swift in Sources */,
 				FAADE2F52D0C662D00DB634D /* AddUserViewModel.swift in Sources */,
+				FAE9787C2D1040C7009C9F21 /* UsersDataRequester.swift in Sources */,
 				FAADE2EC2D0BB1D100DB634D /* NoDataView.swift in Sources */,
 				FAADE2EF2D0C461D00DB634D /* AppCoordinator.swift in Sources */,
 				FAEA22232D08A39C0083F4CA /* ConnectivityObserver.swift in Sources */,
@@ -335,7 +339,7 @@
 				FAEA221F2D0896F30083F4CA /* UsersListViewModel.swift in Sources */,
 				FAEA22312D09F94B0083F4CA /* UserEntityMO.swift in Sources */,
 				FA48008E2CF707C1003432E8 /* CoreDataStack.swift in Sources */,
-				FA4800882CF54250003432E8 /* UsersRequester.swift in Sources */,
+				FA4800882CF54250003432E8 /* UsersDataHTTPRequester.swift in Sources */,
 				CE9F09172CEF646D00CFA6B5 /* SceneDelegate.swift in Sources */,
 				FAEA222F2D09F68C0083F4CA /* UserDataModel.xcdatamodeld in Sources */,
 				FAEA22332D09FC970083F4CA /* DataStorageFacade.swift in Sources */,
