@@ -11,11 +11,8 @@ fileprivate let apiURL = "https://jsonplaceholder.typicode.com/users"
 fileprivate let dataModelName = "UserDataModel"
 
 final class AppCoordinator {
-    var navigationController: UINavigationController? {
-        window.rootViewController as? UINavigationController
-    }
+    private let navigationController: UINavigationController
     
-    private var window: UIWindow
     private var usersListCoordinator: UsersListCoordinator?
     private var addUserCoordinator: AddUserCoordinator?
     
@@ -25,8 +22,8 @@ final class AppCoordinator {
     private let dataService: UsersDataService
     private let connectivityManager: ConnectivityManager
     
-    init(window: UIWindow) {
-        self.window = window
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
         
         self.dataRequester = UsersRequester(apiURL)
         self.fieldValidator = UserFieldsValidatorImplementation()
@@ -50,7 +47,9 @@ final class AppCoordinator {
         self.usersListCoordinator?.delegate = self
         self.usersListCoordinator?.start()
         
-        self.window.rootViewController = usersListCoordinator?.navigationController
+        if let viewController = usersListCoordinator?.rootViewController {
+            self.navigationController.pushViewController(viewController, animated: true)
+        }
     }
     
     private func beginAddUserCoordinator() {
@@ -63,7 +62,7 @@ final class AppCoordinator {
         self.addUserCoordinator?.start()
         
         if let viewController = self.addUserCoordinator?.rootViewController {
-            self.usersListCoordinator?.navigationController?.pushViewController(viewController, animated: true)
+            self.navigationController.pushViewController(viewController, animated: true)
         }
     }
 }
@@ -76,6 +75,6 @@ extension AppCoordinator: UsersListCoordinatorDelegate {
 
 extension AppCoordinator: AddUserCoordinatorDelegate {
     func addUserCoordinatorDidAddedUser(_ sender: AddUserCoordinator) {
-        self.usersListCoordinator?.navigationController?.popViewController(animated: true)
+        self.navigationController.popViewController(animated: true)
     }
 }

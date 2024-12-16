@@ -13,9 +13,10 @@ protocol UsersListCoordinatorDelegate: AnyObject {
 
 final class UsersListCoordinator {
     let finishAction: () -> Void
-    var navigationController: UINavigationController?
-    
     weak var delegate: UsersListCoordinatorDelegate?
+    var rootViewController: UIViewController? {
+        usersListViewController
+    }
 
     private var usersListViewController: UsersListViewController?
     private let usersListViewModel: UsersListViewModel
@@ -27,7 +28,6 @@ final class UsersListCoordinator {
     
     func start() {
         self.usersListViewController = UsersListViewController.instantiate(viewModel: usersListViewModel)
-        self.navigationController = UINavigationController(rootViewController: self.usersListViewController!)
         
         self.usersListViewController?.title = "Users"
         self.usersListViewController?.delegate = self
