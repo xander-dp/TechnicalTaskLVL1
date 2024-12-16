@@ -19,7 +19,7 @@ final class AppCoordinator {
     
     private let dataRequester: UsersDataRequester
     private let fieldValidator: UserFieldsValidator
-    private let dataStorage: DataStorageFacade
+    private let dataStorage: UsersStorage
     private let dataService: UsersDataService
     
     init(navigationController: UINavigationController, connectivityObserver: ConnectivityObserver) {
@@ -27,7 +27,7 @@ final class AppCoordinator {
         self.connectivityObserver = connectivityObserver
         self.dataRequester = UsersDataHTTPRequester(apiURL)
         self.fieldValidator = UserFieldsValidatorImplementation()
-        self.dataStorage = CoreDataStack(name: dataModelName)
+        self.dataStorage = UsersStorageCoreData(name: dataModelName)
         self.dataService = UsersDataServiceImplementation(requester: dataRequester, dataStorage: dataStorage)
     }
     

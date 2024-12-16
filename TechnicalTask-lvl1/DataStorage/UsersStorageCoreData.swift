@@ -1,5 +1,5 @@
 //
-//  CoreDataStack.swift
+//  UsersStorageCoreData.swift
 //  TechnicalTask-lvl1
 //
 //  Created by Oleksandr Savchenko on 27.11.24.
@@ -9,12 +9,12 @@ import CoreData
 
 enum DataStorageError: Error {
     case errorDuringDataGathering
-    case recordAlreadyExist(String)
-    case unableToChangeData(String)
-    case userNotExist(String)
+    case recordAlreadyExist
+    case unableToChangeData
+    case userNotExist
 }
 
-final class CoreDataStack: DataStorageFacade {
+final class UsersStorageCoreData: UsersStorage {
     private let container: NSPersistentContainer
     
     var managedContext: NSManagedObjectContext {
@@ -26,56 +26,39 @@ final class CoreDataStack: DataStorageFacade {
         
         self.container.loadPersistentStores { (storeDescription, error) in
             if let error = error {
-                fatalError("Unable to load store: \(error)")
+                print(error)
             }
         }
     }
     
     func create(entity: UserEntity) throws {
-        if !existing(email: entity.email) {
-            let user = UserEntityMO(context: self.managedContext, with: entity)
-            
-            do {
-                try user.managedObjectContext?.save()
-            } catch {
-                print("Error during Data creation: \(error)")
-                throw DataStorageError.unableToChangeData(error.localizedDescription)
-            }
+        guard !existing(email: entity.email) else {
+            throw DataStorageError.recordAlreadyExist
         }
+        
+        let user = UserEntityMO(context: self.managedContext, with: entity)
+        try user.managedObjectContext?.save()
     }
     
     func read() throws -> [UserEntity] {
         let fetchRequest = UserEntityMO.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "name", ascending: true)]
         
-        do {
-            let data = try self.managedContext.fetch(fetchRequest)
-            return data.map { $0.toUserEntity() }
-        } catch {
-            throw DataStorageError.errorDuringDataGathering
-        }
+        let data = try self.managedContext.fetch(fetchRequest)
+        return data.map { $0.toUserEntity() }
     }
     
     func delete(entity: UserEntity) throws {
-        if let entity = getEntity(with: entity.email) {
-            self.managedContext.delete(entity)
-            do {
-                try managedContext.save()
-            } catch {
-                print("Error during deletion of \(entity): \(error)")
-                throw DataStorageError.unableToChangeData(error.localizedDescription)
-            }
-        } else {
-            throw DataStorageError.userNotExist(entity.email)
+        guard let entity = getEntity(with: entity.email) else {
+            throw DataStorageError.userNotExist
         }
+        
+        self.managedContext.delete(entity)
+        try managedContext.save()
     }
     
     private func existing(email: String) -> Bool {
-        if getEntity(with: email) != nil {
-            return true
-        } else {
-            return false
-        }
+        getEntity(with: email) != nil
     }
     
     private func getEntity(with email: String) -> UserEntityMO? {

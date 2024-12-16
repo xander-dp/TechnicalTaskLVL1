@@ -67,10 +67,12 @@ final class AddUserViewModel: ObservableObject {
     
     func saveButtonTapped() {
         let entity = UserEntity(email: self.email, name: self.name, city: self.city, street: self.street)
-        if self.dataService.save(entity) {
+        
+        do {
+            try self.dataService.save(entity)
             self.userSavedSuccessSubject.send()
-        } else {
-            errorMessage = "Unable to add User \(self.email)"
+        } catch {
+            self.errorMessage = "User already exist"
         }
     }
 }

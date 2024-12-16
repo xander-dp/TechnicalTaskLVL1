@@ -14,7 +14,7 @@ final class UsersListViewModel: ObservableObject {
     @Published var synchronizationInProgres = false
     @Published var errorMessage: String?
     
-    private let dataService: any UsersDataService
+    private let dataService: UsersDataService
     private var cancellables = Set<AnyCancellable>()
     
     init(dataService: any UsersDataService, connectivityObserver: ConnectivityObserver) {
@@ -27,7 +27,7 @@ final class UsersListViewModel: ObservableObject {
     
     func fetchLocalData() {
         do {
-            self.usersList = try self.dataService.fetchLocalData()
+            self.usersList = try self.dataService.fetchData()
         } catch {
             self.errorMessage = error.localizedDescription
         }
@@ -50,7 +50,7 @@ final class UsersListViewModel: ObservableObject {
     func deleteUser(at index: Int) {
         if self.usersList.indices.contains(index) {
             let entity = self.usersList.remove(at: index)
-            self.dataService.delete(entity)
+            try! self.dataService.delete(entity)
         } else {
             self.errorMessage = "No such index"
         }

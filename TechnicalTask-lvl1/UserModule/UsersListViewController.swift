@@ -182,8 +182,8 @@ extension UsersListViewController {
             completionHandler(true)
         }
         
-        deleteAction.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-        deleteAction.image = UIImage(named: "trash_icon")
+        deleteAction.backgroundColor = .lightGray
+        deleteAction.image = UIImage(systemName: "trash")?.withTintColor(.black, renderingMode: .alwaysOriginal)
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
