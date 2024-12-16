@@ -12,7 +12,7 @@ final class UsersListViewController: UITableViewController {
     weak var delegate: UsersListViewControllerDelegate?
     
     private var cancellables = Set<AnyCancellable>()
-    private let usersViewModel: UsersListViewModel
+    private var usersViewModel: UsersListViewModel!
     
     //MARK: Lazy Subviews
     private lazy var refreshCtrl: UIRefreshControl = {
@@ -26,13 +26,18 @@ final class UsersListViewController: UITableViewController {
     
     
     //MARK: Lifecycle
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    static func instantiate(viewModel: UsersListViewModel) -> UsersListViewController {
+        let viewController = UsersListViewController(style: UITableView.Style.grouped)
+        viewController.usersViewModel = viewModel
+        return viewController
     }
     
-    init(usersViewModel: UsersListViewModel) {
-        self.usersViewModel = usersViewModel
-        super.init(style: .grouped)
+    override init(style: UITableView.Style) {
+        super.init(style: style)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -51,9 +56,21 @@ final class UsersListViewController: UITableViewController {
         self.bindViewModel()
     }
     
-    private func bindViewModel() {
+    override func viewWillAppear(_ animated: Bool) {
+        self.usersViewModel?.fetchLocalData()
+    }
+    
+    deinit {
+        delegate?.usersListViewControllerIsDeiniting(self)
+    }
+}
+
+//MARK: Private functions
+private extension UsersListViewController {
+    func bindViewModel() {
         self.usersViewModel.$usersList
             .receive(on: DispatchQueue.main)
+            .dropFirst()
             .sink { [weak self] _ in
                 self?.tableView.reloadData()
             }
@@ -87,14 +104,7 @@ final class UsersListViewController: UITableViewController {
             .store(in: &cancellables)
     }
     
-    deinit {
-        delegate?.usersListViewControllerIsDeiniting(self)
-    }
-}
-
-//MARK: Private functions
-private extension UsersListViewController {
-    @objc private func refresh() {
+    @objc func refresh() {
         self.refreshCtrl.endRefreshing()
         self.activityIndicator.isHidden.toggle()
         self.usersViewModel.synchronizeRemoteData()

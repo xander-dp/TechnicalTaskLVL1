@@ -12,12 +12,12 @@ protocol UsersListCoordinatorDelegate: AnyObject {
 }
 
 final class UsersListCoordinator {
-    var finishAction: () -> Void
+    let finishAction: () -> Void
     var navigationController: UINavigationController?
     
     weak var delegate: UsersListCoordinatorDelegate?
 
-    private weak var usersListViewController: UsersListViewController?
+    private var usersListViewController: UsersListViewController?
     private let usersListViewModel: UsersListViewModel
     
     init(viewModel: UsersListViewModel, finishAction: @escaping () -> Void) {
@@ -26,23 +26,22 @@ final class UsersListCoordinator {
     }
     
     func start() {
-        let viewController = UsersListViewController(usersViewModel: self.usersListViewModel)
-        self.navigationController = UINavigationController(rootViewController: viewController)
+        self.usersListViewController = UsersListViewController.instantiate(viewModel: usersListViewModel)
+        self.navigationController = UINavigationController(rootViewController: self.usersListViewController!)
         
-        self.usersListViewController = viewController
         self.usersListViewController?.title = "Users"
         self.usersListViewController?.delegate = self
         
         let addUserButton = UIBarButtonItem(title: "New User",
                                             style: .plain,
                                             target: self,
-                                            action: #selector(signOutButtonTapped))
+                                            action: #selector(addUserButtonTapped))
         usersListViewController?.navigationItem.rightBarButtonItem = addUserButton
     }
 }
 
 private extension UsersListCoordinator {
-    @objc func signOutButtonTapped() {
+    @objc func addUserButtonTapped() {
         delegate?.usersListCoordinatorDidTapAddButton(self)
     }
 }

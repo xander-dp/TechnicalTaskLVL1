@@ -23,8 +23,6 @@ final class UsersListViewModel: ObservableObject {
         connectivityStatePublisher
             .map { $0 }
             .assign(to: &$connectionEstablished)
-        
-        self.fetchLocalData()
     }
     
     func fetchLocalData() {

@@ -17,8 +17,10 @@ final class AppCoordinator {
     
     private var window: UIWindow
     private var usersListCoordinator: UsersListCoordinator?
+    private var addUserCoordinator: AddUserCoordinator?
     
     private let dataRequester: UsersRequester
+    private let fieldValidator: UserFieldsValidator
     private let dataStorage: DataStorageFacade
     private let dataService: UsersDataService
     private let connectivityManager: ConnectivityManager
@@ -27,6 +29,7 @@ final class AppCoordinator {
         self.window = window
         
         self.dataRequester = UsersRequester(apiURL)
+        self.fieldValidator = UserFieldsValidatorImplementation()
         self.dataStorage = CoreDataStack(name: dataModelName)
         self.dataService = UsersDataServiceImplementation(requester: dataRequester, dataStorage: dataStorage)
         self.connectivityManager = NetworkStatusMonitor()
@@ -40,24 +43,39 @@ final class AppCoordinator {
         let viewModel = UsersListViewModel(dataService: self.dataService,
                                            connectivityStatePublisher: self.connectivityManager.statePublisher)
         
-        usersListCoordinator = UsersListCoordinator(viewModel: viewModel, finishAction: { [weak self] in
+        self.usersListCoordinator = UsersListCoordinator(viewModel: viewModel, finishAction: { [weak self] in
             self?.usersListCoordinator = nil
         })
         
-        usersListCoordinator?.delegate = self
-        usersListCoordinator?.start()
+        self.usersListCoordinator?.delegate = self
+        self.usersListCoordinator?.start()
         
-        window.rootViewController = usersListCoordinator?.navigationController
+        self.window.rootViewController = usersListCoordinator?.navigationController
     }
     
     private func beginAddUserCoordinator() {
-        let dummyController = UIViewController()
-        self.usersListCoordinator?.navigationController?.pushViewController(dummyController, animated: true)
+        self.addUserCoordinator = AddUserCoordinator(dataService: self.dataService,
+                                                     fieldValidator: self.fieldValidator) { [weak self] in
+            self?.addUserCoordinator = nil
+        }
+        
+        self.addUserCoordinator?.delegate = self
+        self.addUserCoordinator?.start()
+        
+        if let viewController = self.addUserCoordinator?.rootViewController {
+            self.usersListCoordinator?.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 
 extension AppCoordinator: UsersListCoordinatorDelegate {
     func usersListCoordinatorDidTapAddButton(_ sender: UsersListCoordinator) {
         beginAddUserCoordinator()
+    }
+}
+
+extension AppCoordinator: AddUserCoordinatorDelegate {
+    func addUserCoordinatorDidAddedUser(_ sender: AddUserCoordinator) {
+        self.usersListCoordinator?.navigationController?.popViewController(animated: true)
     }
 }

@@ -23,6 +23,11 @@
 		FAADE2EC2D0BB1D100DB634D /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2EB2D0BB1C500DB634D /* NoDataView.swift */; };
 		FAADE2EF2D0C461D00DB634D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2EE2D0C461800DB634D /* AppCoordinator.swift */; };
 		FAADE2F12D0C4E8F00DB634D /* UsersListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2F02D0C4E8C00DB634D /* UsersListCoordinator.swift */; };
+		FAADE2F52D0C662D00DB634D /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2F42D0C662200DB634D /* AddUserViewModel.swift */; };
+		FAADE2F72D0C663D00DB634D /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2F62D0C663500DB634D /* AddUserViewController.swift */; };
+		FAADE2FD2D0EF50700DB634D /* AddUserFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2FC2D0EF4FD00DB634D /* AddUserFormView.swift */; };
+		FAADE2FF2D0F881F00DB634D /* AddUserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE2FE2D0F880A00DB634D /* AddUserCoordinator.swift */; };
+		FAADE3012D0FAC5E00DB634D /* UserFieldsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAADE3002D0FAC5A00DB634D /* UserFieldsValidator.swift */; };
 		FAEA221F2D0896F30083F4CA /* UsersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */; };
 		FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */; };
 		FAEA22252D0997EF0083F4CA /* UsersDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA22242D0997B50083F4CA /* UsersDataService.swift */; };
@@ -53,6 +58,11 @@
 		FAADE2EB2D0BB1C500DB634D /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		FAADE2EE2D0C461800DB634D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FAADE2F02D0C4E8C00DB634D /* UsersListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListCoordinator.swift; sourceTree = "<group>"; };
+		FAADE2F42D0C662200DB634D /* AddUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewModel.swift; sourceTree = "<group>"; };
+		FAADE2F62D0C663500DB634D /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
+		FAADE2FC2D0EF4FD00DB634D /* AddUserFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserFormView.swift; sourceTree = "<group>"; };
+		FAADE2FE2D0F880A00DB634D /* AddUserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserCoordinator.swift; sourceTree = "<group>"; };
+		FAADE3002D0FAC5A00DB634D /* UserFieldsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFieldsValidator.swift; sourceTree = "<group>"; };
 		FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModel.swift; sourceTree = "<group>"; };
 		FAEA22222D08A3910083F4CA /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		FAEA22242D0997B50083F4CA /* UsersDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataService.swift; sourceTree = "<group>"; };
@@ -94,13 +104,14 @@
 		CE9F09132CEF646D00CFA6B5 /* TechnicalTask-lvl1 */ = {
 			isa = PBXGroup;
 			children = (
-				FAEA222A2D09F1D40083F4CA /* Utils */,
+				CE9F09292CEF659F00CFA6B5 /* Application */,
+				FA4800722CF4A165003432E8 /* Entity */,
 				FA4800862CF5423C003432E8 /* DataAccessLayer */,
 				FA4800782CF4E979003432E8 /* DataStorage */,
-				FA4800722CF4A165003432E8 /* Entity */,
-				CE9F09292CEF659F00CFA6B5 /* Application */,
 				CE9F092A2CEF65CA00CFA6B5 /* UserModule */,
+				FA4800752CF4D845003432E8 /* CustomViews */,
 				CE9F09282CEF658B00CFA6B5 /* Resources */,
+				FAEA222A2D09F1D40083F4CA /* Utils */,
 			);
 			path = "TechnicalTask-lvl1";
 			sourceTree = "<group>";
@@ -128,8 +139,11 @@
 		CE9F092A2CEF65CA00CFA6B5 /* UserModule */ = {
 			isa = PBXGroup;
 			children = (
+				FAADE2F22D0C65A800DB634D /* UserCell */,
+				FAADE2FC2D0EF4FD00DB634D /* AddUserFormView.swift */,
+				FAADE2F42D0C662200DB634D /* AddUserViewModel.swift */,
+				FAADE2F62D0C663500DB634D /* AddUserViewController.swift */,
 				FAEA221E2D0896ED0083F4CA /* UsersListViewModel.swift */,
-				FA4800752CF4D845003432E8 /* CustomViews */,
 				CE9F09182CEF646D00CFA6B5 /* UsersListViewController.swift */,
 			);
 			path = UserModule;
@@ -149,8 +163,6 @@
 				FAADE2EB2D0BB1C500DB634D /* NoDataView.swift */,
 				FAADE2E92D0BAA4900DB634D /* NoConnectionView.swift */,
 				FAADE2E52D0B813600DB634D /* ActivityIndicator.swift */,
-				FA48006E2CF498C1003432E8 /* UserCell.swift */,
-				FA48006F2CF498C1003432E8 /* UserCell.xib */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -169,9 +181,9 @@
 		FA4800862CF5423C003432E8 /* DataAccessLayer */ = {
 			isa = PBXGroup;
 			children = (
-				FAADE2E72D0BA6BA00DB634D /* NetworkStatusMonitor.swift */,
 				FAADE2AB2D0B3DD800DB634D /* Protocols */,
 				FAADE2AC2D0B3DFB00DB634D /* DALDataModel */,
+				FAADE2E72D0BA6BA00DB634D /* NetworkStatusMonitor.swift */,
 				FAEA22262D09C0A30083F4CA /* UsersDataServiceImplementation.swift */,
 				FA4800872CF54247003432E8 /* UsersRequester.swift */,
 			);
@@ -207,14 +219,25 @@
 			isa = PBXGroup;
 			children = (
 				FAADE2EE2D0C461800DB634D /* AppCoordinator.swift */,
+				FAADE2FE2D0F880A00DB634D /* AddUserCoordinator.swift */,
 				FAADE2F02D0C4E8C00DB634D /* UsersListCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		FAADE2F22D0C65A800DB634D /* UserCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA48006E2CF498C1003432E8 /* UserCell.swift */,
+				FA48006F2CF498C1003432E8 /* UserCell.xib */,
+			);
+			path = UserCell;
+			sourceTree = "<group>";
+		};
 		FAEA222A2D09F1D40083F4CA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FAADE3002D0FAC5A00DB634D /* UserFieldsValidator.swift */,
 				FAEA222B2D09F1DE0083F4CA /* Task+store.swift */,
 			);
 			path = Utils;
@@ -294,8 +317,11 @@
 				FAEA22252D0997EF0083F4CA /* UsersDataService.swift in Sources */,
 				FA4800712CF498C1003432E8 /* UserCell.swift in Sources */,
 				FAADE2EA2D0BAA8600DB634D /* NoConnectionView.swift in Sources */,
+				FAADE3012D0FAC5E00DB634D /* UserFieldsValidator.swift in Sources */,
+				FAADE2FF2D0F881F00DB634D /* AddUserCoordinator.swift in Sources */,
 				CE9F09192CEF646D00CFA6B5 /* UsersListViewController.swift in Sources */,
 				CE9F09152CEF646D00CFA6B5 /* AppDelegate.swift in Sources */,
+				FAADE2F52D0C662D00DB634D /* AddUserViewModel.swift in Sources */,
 				FAADE2EC2D0BB1D100DB634D /* NoDataView.swift in Sources */,
 				FAADE2EF2D0C461D00DB634D /* AppCoordinator.swift in Sources */,
 				FAEA22232D08A39C0083F4CA /* ConnectivityManager.swift in Sources */,
@@ -303,6 +329,7 @@
 				FAEA222C2D09F1EB0083F4CA /* Task+store.swift in Sources */,
 				FA4800742CF4A72A003432E8 /* DALUser.swift in Sources */,
 				FAEA22292D09E9D80083F4CA /* UserEntity.swift in Sources */,
+				FAADE2F72D0C663D00DB634D /* AddUserViewController.swift in Sources */,
 				FAEA22272D09C0AA0083F4CA /* UsersDataServiceImplementation.swift in Sources */,
 				FAADE2F12D0C4E8F00DB634D /* UsersListCoordinator.swift in Sources */,
 				FAEA221F2D0896F30083F4CA /* UsersListViewModel.swift in Sources */,
@@ -313,6 +340,7 @@
 				FAEA222F2D09F68C0083F4CA /* UserDataModel.xcdatamodeld in Sources */,
 				FAEA22332D09FC970083F4CA /* DataStorageFacade.swift in Sources */,
 				FAADE2E82D0BA6C200DB634D /* NetworkStatusMonitor.swift in Sources */,
+				FAADE2FD2D0EF50700DB634D /* AddUserFormView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
