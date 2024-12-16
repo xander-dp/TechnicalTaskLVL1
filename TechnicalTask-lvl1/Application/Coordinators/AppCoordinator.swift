@@ -37,12 +37,11 @@ final class AppCoordinator {
     }
     
     private func startUsersListCoordinator() {
-        let viewModel = UsersListViewModel(dataService: self.dataService,
-                                           connectivityStatePublisher: self.connectivityManager.statePublisher)
-        
-        self.usersListCoordinator = UsersListCoordinator(viewModel: viewModel, finishAction: { [weak self] in
+        self.usersListCoordinator = UsersListCoordinator(
+            dataService: self.dataService,
+            connectivityManager: self.connectivityManager) { [weak self] in
             self?.usersListCoordinator = nil
-        })
+        }
         
         self.usersListCoordinator?.delegate = self
         self.usersListCoordinator?.start()

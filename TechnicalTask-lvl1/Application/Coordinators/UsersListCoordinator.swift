@@ -19,15 +19,19 @@ final class UsersListCoordinator {
     }
 
     private var usersListViewController: UsersListViewController?
-    private let usersListViewModel: UsersListViewModel
+    private let dataService: UsersDataService
+    private let connectivityManager: ConnectivityManager
     
-    init(viewModel: UsersListViewModel, finishAction: @escaping () -> Void) {
-        self.usersListViewModel = viewModel
+    init(dataService: UsersDataService, connectivityManager: ConnectivityManager, finishAction: @escaping () -> Void) {
+        self.dataService = dataService
+        self.connectivityManager = connectivityManager
         self.finishAction = finishAction
     }
     
     func start() {
-        self.usersListViewController = UsersListViewController.instantiate(viewModel: usersListViewModel)
+        let viewModel = UsersListViewModel(dataService: self.dataService,
+                                           connectivityObserver: self.connectivityManager)
+        self.usersListViewController = UsersListViewController.instantiate(viewModel: viewModel)
         
         self.usersListViewController?.title = "Users"
         self.usersListViewController?.delegate = self

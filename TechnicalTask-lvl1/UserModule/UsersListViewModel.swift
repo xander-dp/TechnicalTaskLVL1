@@ -17,10 +17,10 @@ final class UsersListViewModel: ObservableObject {
     private let dataService: any UsersDataService
     private var cancellables = Set<AnyCancellable>()
     
-    init(dataService: any UsersDataService, connectivityStatePublisher: AnyPublisher<Bool, Never>) {
+    init(dataService: any UsersDataService, connectivityObserver: ConnectivityManager) {
         self.dataService = dataService
         
-        connectivityStatePublisher
+        connectivityObserver.statePublisher
             .map { $0 }
             .assign(to: &$connectionEstablished)
     }
