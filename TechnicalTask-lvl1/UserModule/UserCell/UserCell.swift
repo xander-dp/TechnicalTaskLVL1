@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class UserCell: UITableViewCell {
+final class UserCell: UITableViewCell {
     static let reuseIdentifier = "UserContactCellIdentifier"
     static let xibName = "UserCell"
 
@@ -18,7 +18,7 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var addressMainLabel: UILabel!
     @IBOutlet weak var addressSecondaryLabel: UILabel!
     
-    private var model: UserViewModel! {
+    private var model: UserEntity! {
         didSet {
             usernameLabel?.text = model.name
             emailLabel?.text = model.email
@@ -37,9 +37,7 @@ class UserCell: UITableViewCell {
         self.wrapperView.layer.cornerRadius = 20
     }
     
-    var cancellable: AnyCancellable? // 1
-    
-    func configureCell(with model: UserViewModel) {
+    func configureCell(with model: UserEntity) {
         self.model = model
     }
 
